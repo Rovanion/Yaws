@@ -1,0 +1,326 @@
+/*
+ * #96CA2D		Green Base color		Garden swimming pool color scheme
+ * #678A1F		Darker shade of Base color
+ * #B5E655		Light Green
+ * #EDF7F2		White-Blue
+ * #4BB5C1		Blue
+ * #7FC6BC		Green-Blue
+*/
+
+/* The Yahoo CSS reset, this so that the page looks the same in every browser.
+ * Atleast somewhat the same, IE is always different*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+    padding: 0;
+    margin: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset,img { 
+    border: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-weight: normal;
+    font-style: normal;
+}
+ol,ul {
+    list-style: none;
+}
+caption,th {
+    text-align: left;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    font-size: 100%;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym { 
+    border: 0;
+}
+	
+body{
+    background-color: 		#4BB5C1;
+}
+
+div#head{
+    padding:				1em;
+    margin: 				-1em 0em 0em 0em;
+    width: 					auto;
+    height: 				6em;
+    background-color: 		#EDF7F2;
+    -moz-border-radius:		0em 0em 1em 1em;
+    -moz-box-shadow: 		inset 2px 2px 1em rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 	0em 0em 1em 1em;
+    -webkit-box-shadow: 	2px 2px 40px rgba(0, 0, 0, 0.2);
+    border-radius:		0em 0em 1em 1em;
+    box-shadow: 		inset 2px 2px 1em rgba(0, 0, 0, 0.5);
+}
+div#main{
+    width: 					auto;
+    height: 				auto;
+    background-color:		#EDF7F2;
+    -moz-box-shadow: 		inset 2px 6px 1.3em rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 	inset 2px 6px 1.5em rgba(0, 0, 0, 0.2);
+    box-shadow: 		inset 2px 6px 1.3em rgba(0, 0, 0, 0.5);
+    position:				relative;
+    z-index:				10;
+}
+div#content2{
+    padding:				2em 2em 0.5em 2em;
+}
+div#bottom{
+    background-color: 		#DDE7E2;
+    -moz-border-radius:		0em 0em 1em 1em;
+    -moz-box-shadow:		inset 2px 2px 1em rgba(0, 0, 0, 0.45);
+    -webkit-border-radius: 	0em 0em 1em 1em;
+    border-radius:		0em 0em 1em 1em;
+    box-shadow:		inset 2px 2px 1em rgba(0, 0, 0, 0.45);
+    padding: 				2em 2em 1.3em;
+    margin: 				-1em 0 0 0;
+    position:				relative;
+    z-index:				5;
+}
+div#top{
+    background-color: 		#8DC023;
+    -moz-border-radius:		1em 1em 0 0;
+    -webkit-border-radius: 	1em 1em 0 0;
+    border-radius:		1em 1em 0 0;
+    margin: 1.5em 0 0 0;
+    position:				relative;
+    z-index:				5;
+    height: 4em;
+}
+div#footer{
+    background-color: #DDE7E2;
+    margin: 2em 0 0 0;
+    padding: 1.5em 0 1em ;
+    height: 6em;
+    -webkit-border-radius: 	1em 1em 1em 1em;
+    -moz-border-radius: 	1em 1em 1em 1em;
+    -moz-box-shadow:	    inset 2px 2px 1em rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 	2px 4px 40px rgba(0, 0, 0, 0.2);
+    box-shadow:	    inset 2px 2px 1em rgba(0, 0, 0, 0.3);
+    border-radius: 	1em 1em 0 0;
+}
+div.button{
+    float:left;
+    border: 1px solid #8EC1DA;
+    background-color: #DDEEF6;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px #fff, inset 0 -15px #cbe6f2, 0 0 3px #8ec1da;
+    -webkit-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #cbe6f2, 0 0 3px #8ec1da;
+    -moz-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #cbe6f2, 0 0 3px #8ec1da;
+    color: #3985a8;
+    text-shadow: 0 1px #fff;
+    padding: 5px 30px;
+}
+div.button:hover{
+    background-color:		#E1F2F9;
+    border-color:           #86BA1D;
+    cursor: pointer;
+}
+div.button:hover h3{
+    color: 					#7FC6BC;
+}
+div.openCloseContainer{
+    margin-bottom: 1em;
+    display: inline-block;
+}
+div.edit{
+    float: 					right;
+}
+
+div.deleteContainer{
+    float: 					right;
+}
+
+div.yesNoContainer{
+    position: 				relative;
+    margin-top: 			-1.2em;
+    float: 					right;
+}
+div.menuItem{
+    background-color: 		#96CA2D;
+    height: inherit;
+    text-align: center;
+    vertical-align: middle;
+    width: auto;
+    float: left;
+    cursor: pointer;
+    -moz-box-shadow: inset 0 0 1.5em rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: inset 0 0 1.5em rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 1.5em rgba(0, 0, 0, 0.1);
+}
+div.menuItem:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 0 1.5em rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 0 2.2em rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 0 1.5em rgba(0, 0, 0, 0.4);
+}
+div.menuItem:hover h4{
+    color: #007A88;
+}
+div.menuItem.left{
+    -moz-border-radius: 1em 0 0 0;
+    border-radius: 1em 0 0 0;
+    -webkit-border-radius: none;
+}
+div.menuItem.right{
+    -moz-border-radius: 0 1em 0 0;
+    border-radius: 0 1em 0 0;
+    -webkit-border-radius: none;    
+    float: right;
+    background-image: "../img/dali.png";
+}
+div.right:hover img.hidden{
+    z-index: 11;
+}
+div.spacer{
+    height: inherit;
+    background-color: grey;
+    float: left;
+    width: 1px;
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+}
+div.foot{
+    float: left;
+    padding: 0 3em 0 3em;
+    width: auto;
+}
+div.hidden{
+    margin: 				1em 0em 1em 0em;
+    overflow:                           hidden;
+    display: block;
+}
+div.kategori{
+    clear: both;
+    padding: 0 0 0 2em;
+}
+div.formContainer{
+    clear: both;
+}
+li.contentContainer{
+    clear: both;
+    display: block;
+}
+
+table {
+    margin: 				0em auto; 
+    text-align: 			center;
+    width: 				50em;
+}
+td{
+    text-align:				left;
+}
+
+td#content{
+    position:				relative;
+    z-index:				10;
+}
+
+h1{
+    font-family: 			"Trebuchet MS";
+    font-size: 				4em;
+    color: 					#B5E655;
+    text-shadow: 			1px 1px #7FC6BC, 2px 2px #7FC6BC, 3px 3px #7FC6BC, 4px 4px #7FC6BC, 5px 5px #7FC6BC, 6px 6px #7FC6BC, -1px -1px rgba(255, 255, 255, 0.8);
+    margin-bottom:			1em;
+    text-align:				center;
+    font-weight:			bold;
+}
+h2{
+    font-size:				1.7em;
+    font-family:			Tahoma, Sans-Serif;
+    color:					#4BB5C1;
+    clear: left;
+    display: inline-block;
+}
+h2.X:hover{
+    color:					#7FC6BC;
+    text-shadow: 0 0 1.5em rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+h3{
+    clear: left;
+    font-size:				1.2em;
+    font-family:			Tahoma, Sans-Serif;
+    color:					#4BB5C1;
+    display: inline-block;
+}
+h3.X:hover{
+    color:					#7FC6BC;
+}
+h4{
+    font-size: 2em;
+    font-family: Tahoma, Sans-Serif;
+    color: #08727E;
+    text-shadow: 0 1px rgba(250, 250, 250, 0.4);
+    padding: 0.5em;
+    display: inline-block;
+}
+h6{
+    font-size: 0.8em;
+    font-family: Tahoma, Sans-Serif;
+    color: #08727E;
+    text-shadow: 1px 1px rgba(250, 250, 250, 0.4);
+    display: inline-block;
+}
+h6.link:hover{
+    cursor: pointer;
+    color: #7FC6BC;
+}
+
+a{
+    display:				block;
+    color:					#7FC6BC;
+    text-decoration:		none;
+    height: inherit;
+    width: inherit;
+}
+a:hover{
+    color:					#4BB5C1;
+}
+
+p{
+    font-family: 			Verdana, Arial, sans-serif;
+    font-size: 				1em;
+    color:					33302B;
+    line-height:			1.5;
+    text-shadow: 			-1px 1px 7px rgba(196, 195, 162, 0.5);
+    margin: 				1em 0em 1em 0em;
+}
+p.hidden{
+    overflow:				hidden;
+}
+
+b{
+    font-family: 			Verdana, Arial, sans-serif;
+    font-size: 				1em;
+    font-weight:			800;
+    color:					33302B;
+    line-height:			1.5;
+    text-shadow: 			-1px 1px 2px rgba(196, 195, 162, 0.5);
+    margin: 				1em 0em 3em 0em;
+}
+img.hidden{
+    position: absolute;
+    z-index: -1;
+}
+
+textarea{
+    width: 50em;
+}
+input.login{
+    width: 8em;
+}
+input{
+    width: 20em;
+}
+select{
+    margin-top: 0.3em;
+}
