@@ -23,11 +23,12 @@ makeMenu();    //Creates the main menu
 <div id="main">
 <div id="content2">
 
-<form action="operations.php" method="post">
+<form action="../lib/operations.php" method="post">
   <label for="email">Epostadress</label><br />
-  <input type="input" id="email" name="email" title="email"><br /><br />
+  <input type="input" id="email" name="email" title="email"><br />
+  <input type="hidden" name="submit" value="Register">
   <input type="submit" value="Register"></input>
-</form>
+</form><br />
 
 </div>
 </div>

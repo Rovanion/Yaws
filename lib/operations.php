@@ -57,7 +57,6 @@ if($loggedIn){
 
   //The fallowing updates an entry on a page
   else if($_POST["submit"] == "Spara"){
-    print_r[$_POST];
     $table = mysql_real_escape_string($_POST["table"]);
     $title = mysql_real_escape_string($_POST["title"]);
     $JStitle = cleanForJavaScript($title);
@@ -122,11 +121,11 @@ if($loggedIn){
 }
 else if($_POST["submit"] == "Register"){
   $sql = "SELECT * FROM `users`";
-  $result mysql_query($sql);
+  $result = mysql_query($sql);
   if(mysql_num_rows($result) == 0)
     registerNewUser();
 }
-else if($_POST["submit"] == "Verification"){
+else if($_POST["submit"] == "Validation"){
   $email = mysql_real_escape_string($_POST["email"]);
   $password = mysql_real_escape_string($_POST["password"]);
   $md5password = md5($password);
@@ -163,19 +162,20 @@ function getNextIndex($table){
 function registerNewUser(){
   $email = mysql_real_escape_string($_POST["email"]);
   $validated = filter_var($email, FILTER_VALIDATE_EMAIL);
-  if($validated && $password > 6){ //Makes sure the password has good length and email is correct                       
+  if($validated){ //Check if the email is correct                       
     $token = createToken(32);
     $sql = "INSERT INTO `verification` (`email` ,`token`) VALUES ('{$email}', '{$token}');";
     if(!mysql_query($sql))
       reportError($sql);
     
     //FIXME The message and domain name should be variable.
-    $message = 'Var hälsad! \n \n Åt dig har det skapats ett administrativt konto på luckey.se \n'.
-      'Var god besök följande adress för att aktivera kontot:\n '.
-      'http://luckey.se/pages/verification.php?email='. $email . '&token'. $token;
+    $message = "Var hälsad! \n \n Åt dig har det skapats ett administrativt konto på rovanion.dyndns.org \n".
+      "Var god besök följande adress för att aktivera kontot: \n ".
+      "http://rovanion.dyndns.org/pages/verification.php?email=". $email . '&token='. $token;
     if(!mail($email, 'Verification of administrational account', $message))
       echo 'Sending the verification email failed';
   }
+  echo $message;
 }
 
 function createToken($length) {

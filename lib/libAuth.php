@@ -19,7 +19,7 @@ function checkLogin(){
     login();
   
   if (isset($_SESSION["email"]) && isset($_SESSION["password"])){
-    $sql = "SELECT * FROM users WHERE username='{$_SESSION["email"]}' 
+    $sql = "SELECT * FROM users WHERE email='{$_SESSION["email"]}' 
 	    AND password='{$_SESSION["password"]}'";
     $result = mysql_query($sql);
     $array = mysql_fetch_assoc($result);
@@ -40,7 +40,7 @@ function login(){
     $password = mysql_real_escape_string($_POST["password"]);
     $user = mysql_real_escape_string($_POST["email"]);
     $md5password = md5($password);
-    $sql = "SELECT * FROM users WHERE username='{$user}' 
+    $sql = "SELECT * FROM users WHERE email='{$user}' 
 		AND password='{$md5password}'";
     $result = mysql_query($sql);
     
@@ -55,7 +55,7 @@ function login(){
       $_SESSION["password"] = $md5password;
     }
     else
-      echo "Du loggades inte in. Detta är en ful svart text.";
+      echo "<br />Du loggades inte in. Detta är en ful svart text.";
   }
 }
 
