@@ -24,7 +24,7 @@ function checkLogin(){
     $result = mysql_query($sql);
     $array = mysql_fetch_assoc($result);
     
-    if($_SESSION["email"] == $array["username"] && $_SESSION["password"] == $array["password"]){
+    if($_SESSION["email"] == $array["email"] && $_SESSION["password"] == $array["password"]){
       return true;
     }
   }
