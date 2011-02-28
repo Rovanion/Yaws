@@ -35,7 +35,7 @@ function createContent($secondClass){
       global $loggedIn;
       $id = $post["JStitle"];
       
-      echo '<li class="contentHolder" id="'. $id. 'ContentHolder">';
+      echo '<li class="contentListItem" id="'. $id. 'ContentListItem">';
       if($post["type"] == 0){
 	echo'<h2 class="X" id="'. $id. '">'. $post["title"]. '</h2>';
 	if($loggedIn)
