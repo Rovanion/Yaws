@@ -126,7 +126,7 @@ div.button:hover h3{
     color: 					#7FC6BC;
 }
 div.cancelButton{
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 div.openCloseContainer{
     margin-bottom: 1em;
@@ -206,7 +206,7 @@ div.kategori{
 }
 div.formContainer{
     clear: both;
-    margin-top: 2em;
+    margin-top: 1em;
 }
 li.contentListItem{
     clear: both;

@@ -116,7 +116,7 @@ function makeAdminInterface($post, $type){
        '<div class="button yes" id="'. $id. 'yesButton"><h3>Ja</h3></div>'.
        '<div class="button no" id="' . $id. 'noButton"><h3>Nej</h3></div></div>';
     
-    echo '<div class="formContainer" id="'. $id. 'formContainer">
+    echo '<div class="formContainer" id="'. $id. 'FormContainer">
         	<form method=post action="../lib/operations.php">
 		    <label for=title> Titel: </label> 
 	      	    <input type="text" name="title" value="'. $post["title"]. '">
