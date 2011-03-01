@@ -3,8 +3,11 @@ require_once "../lib/libAuth.php";
 require_once "../lib/libJoy.php";
 
 if($loggedIn){
-  $table = mysql_real_escape_string($_POST["table"]); 
-  
+  if(isset($_POST["table"]))
+      $table = mysql_real_escape_string($_POST["table"]); 
+  else 
+    $table = 'pages';
+
   //The fallowing creates a new entry on the page
   if($_POST["submit"] == "Publicera"){
     $numberOfPosts = getNextIndex($table);
@@ -197,8 +200,12 @@ function validateNewUser(){
     $sql = "DELETE FROM `verification` WHERE `email` = '{$email}'";
     if(!mysql_query($sql))
       reportError($sql);
-    else
+    else{
+      $_POST["email"] = $email;
+      $_POST["password"] = $password;
+      checkLogin();
       echo '1';
+    }
   }
   else echo 'Your verification values are incorrect: ' + $email + $token;
 }

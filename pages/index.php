@@ -2,7 +2,7 @@
 require_once '../lib/libAuth.php';
 require_once '../lib/libJoy.php';
 
-makeHead('Joypeak - Där allting är gratis förutom maten ');
+makeHead('LAN - Låt blodet rinna! ');
 
 echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 ?>
@@ -10,7 +10,7 @@ echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 <tr>
 <td id="header">
 <div id="head">
-<h1>Joypeak</h1>
+<h1>ASHUUUUUUUM!</h1>
 <div class="bottom"></div>
 </div>
 </td>
@@ -74,8 +74,13 @@ if(!$loggedIn){
 <?php
 }
 else{
+<<<<<<< HEAD
   echo '<h6><a href="../pages/register.php">Skapa konto</a></h6><br />'.
     '<h6><a href="../pages/logout.php">Logga ut</a></h6>';
+=======
+  echo '<a href="../pages/register.php"><h6>Lägg till Admin</h6></a>';
+  echo '<a href="../pages/logout.php"><h6>Logga ut</h6></a>';
+>>>>>>> 2f6435083d6f22591684cd95bb557698f5647e0e
 }
 ?>
 </div>
