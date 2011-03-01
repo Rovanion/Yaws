@@ -23,18 +23,15 @@ makeMenu();    //Creates the main menu
 ?>
 <div id="main">
 <div id="content2">
-<?php
 
-
-<h6 class="link admin">Administrera</h6>
+<h2 class="link admin">Sätt lösenord på ditt konto</h2>
 <form action="../pages/index.php" method="post">
         <label for="Lösenord">Lösenord</label><br />
-        <input class="login" type="password" name="email" title="Epostadress"><br />
+        <input id="password1" type="password" name="email" title="Epostadress"><br />
         <label for="Pass1">Upprepa lösenord</label><br />
-        <input class="login" type="password" name="password" title="Lösenord"><br />
-</form><div class="button verify">Skapa konto</div>
+        <input id="password2" type="password" name="password" title="Lösenord"><br />
+</form><div class="button verify"><h3>Skapa konto</h3></div>
 
-?>
 </div>
 </div>
 <div id="bottom">
