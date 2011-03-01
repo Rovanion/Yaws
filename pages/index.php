@@ -73,7 +73,10 @@ if(!$loggedIn){
 </form></div>
 <?php
 }
-else echo '<a href="../pages/logout.php">Logga ut</a>'
+else{
+  echo '<h6><a href="../pages/register.php">Skapa konto</a></h6><br />'.
+    '<h6><a href="../pages/logout.php">Logga ut</a></h6>';
+}
 ?>
 </div>
 </div>
