@@ -6,6 +6,7 @@ makeHead('Joypeak - Där allting är gratis förutom maten ');
 
 echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 ?>
+<script src="../lib/verifyScript.js" type="text/javascript" language="javascript"></script> 
 <table>
 <tr>
 <td id="header">
@@ -24,7 +25,14 @@ makeMenu();    //Creates the main menu
 <div id="content2">
 <?php
 
-include '../pages/content.php'; //Creates the main content of the page
+
+<h6 class="link admin">Administrera</h6>
+<form action="../pages/index.php" method="post">
+        <label for="Lösenord">Lösenord</label><br />
+        <input class="login" type="password" name="email" title="Epostadress"><br />
+        <label for="Pass1">Upprepa lösenord</label><br />
+        <input class="login" type="password" name="password" title="Lösenord"><br />
+</form><div class="button verify">Skapa konto</div>
 
 ?>
 </div>

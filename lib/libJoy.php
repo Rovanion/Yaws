@@ -6,18 +6,18 @@ function makeHead($title){    //This is the function that makes the head of the 
 	<!DOCTYPE HTML>
 	<html>
             <head>
-	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	    <meta http-equiv="Content-Type" content="text/html" charset=utf-8">
 	    <link href="../style/joySheet.css" rel="stylesheet" type="text/css">
             <link rel="icon" href="../img/favicon.png">
             <title>'. $title. '</title>
 	    	
-	    <script src="../lib/jquery.js" text/javascript" language="javascript"></script>
-	    <script src="../lib/jquery.easing.js" text/javascript" language="javascript"></script>
-            <script src="../lib/joyScript.js" text/javascript" language="javascript"></script>');
+	    <script src="../lib/jquery.js" type="text/javascript" language="javascript"></script>
+	    <script src="../lib/jquery.easing.js" type="text/javascript" language="javascript"></script>
+            <script src="../lib/joyScript.js" type="text/javascript" language="javascript"></script>');
 
   if($loggedIn){
-    echo('<script src="../lib/nicEdit.js" text/javascript" language="javascript"></script> 
-          <script src="../lib/adminScript.js" text/javascript" language="javascript"></script>');
+    echo('<script src="../lib/nicEdit.js" type="text/javascript" language="javascript"></script> 
+          <script src="../lib/adminScript.js" type="text/javascript" language="javascript"></script>');
   }
 
   echo '</head>';
