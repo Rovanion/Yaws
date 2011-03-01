@@ -125,6 +125,9 @@ div.button:hover{
 div.button:hover h3{
     color: 					#7FC6BC;
 }
+div.button.small{
+    padding: 5px 10px;
+}
 div.cancelButton{
     margin-bottom: 2em;
 }
@@ -206,7 +209,6 @@ div.kategori{
 }
 div.formContainer{
     clear: both;
-    margin-top: 2em;
 }
 li.contentListItem{
     clear: both;

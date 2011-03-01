@@ -31,7 +31,8 @@ $email = mysql_real_escape_string($_GET["email"]);
 $token = mysql_real_escape_string($_GET["token"]);
 $sql = "SELECT * FROM `verification` 
         WHERE `email` LIKE '{$email}' AND `code` LIKE '{$token}'";
-if(mysql_query($sql)){
+$rows = mysql_query($sql);
+if(mysql_num_rows($rows) == 1){
   ?>
   <h2>Ange lösenord för ditt konto</h2>
   <form>
@@ -39,7 +40,7 @@ if(mysql_query($sql)){
         <input type="password" name="pass1" title="Lösenord1"><br />
         <label for="pass2">Upprepa lösenord</label><br />
         <input type="password" name="pass2" title="Lösenord2"><br />
-        <div class="button">Skapa konto</div>
+        <div class="button" id="VerifyButton">Skapa konto och logga in</div>
   </form>
   <?php
 }

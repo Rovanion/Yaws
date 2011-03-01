@@ -14,7 +14,6 @@ if(!isset($_POST["submit"])){
   echo '</ul>';
 
   if($loggedIn){
-    echo '<br /><br /><br />';
     makeAddButton('Page', $table);
   }
 }
@@ -116,7 +115,7 @@ function makeAdminInterface($post, $type){
        '<div class="button yes" id="'. $id. 'yesButton"><h3>Ja</h3></div>'.
        '<div class="button no" id="' . $id. 'noButton"><h3>Nej</h3></div></div>';
     
-    echo '<div class="formContainer" id="'. $id. 'formContainer">
+    echo '<div class="formContainer" id="'. $id. 'FormContainer">
         	<form method=post action="../lib/operations.php">
 		    <label for=title> Titel: </label> 
 	      	    <input type="text" name="title" value="'. $post["title"]. '">
@@ -145,17 +144,17 @@ function makeAddButton($id){
             <form method=post action="../lib/operations.php" class="newForm" id="'. $id. 'NewForm">
                 <input class="table" type="hidden" name="table" value="'. $table. '" />
                 <input type="hidden" name="parent" value="'. $id .'" />
-            	<label for=titel> Titel: </label> 
-       		<input type=text name=title>
-		<div class="textarean">
-                    <label for=content> Brödtext: </label> 
-		    <textarea name=content></textarea>
+            	<label for=titel><h6>Titel</h6></label><br /> 
+       		<input type="text" name="title">
+		<div class="textareaContainer">
+                    <label for="content"><h6>Brödtext</h6></label> 
+		    <textarea name="content"></textarea>
                 </div>
 		<input type="hidden" name="submit" value="Publicera">
 	    </form>
-        <div class="button submit" id="'. $id. 'SubmitButton><h3>Skapa</h3></div>
+        <div class="button submit" id="'. $id. 'SubmitButton"><h3>Skapa</h3></div>
         <div class="button cancelButton"><h3>Avbryt</h3></div>
-        </div>';
+        </div><br /><br />';
 }
 
 ?>
