@@ -18,13 +18,13 @@ echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 <tr>
 <td id="content">
 <?php
-makeMenu();    //Creates the main menu
+							//makeMenu();    //Creates the main menu
 ?>
 <div id="main">
 <div id="content2">
 
 <form action="../lib/operations.php" method="post">
-  <label for="email">Epostadress</label><br />
+  <label for="email"><h3>Epostadress</h3></label><br />
   <input type="input" id="email" name="email" title="email"><br />
   <input type="hidden" name="submit" value="Register">
   <input type="submit" value="Register"></input>
