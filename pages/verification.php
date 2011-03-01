@@ -4,7 +4,9 @@ require_once '../lib/libJoy.php';
 
 makeHead('Joypeak - Där allting är gratis förutom maten ');
 
-echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
+echo '<body'; 
+if($loggedIn) echo ' class="loggedIn"'; 
+echo'>';
 ?>
 <script src="../lib/verifyScript.js" type="text/javascript" language="javascript"></script> 
 <table>
@@ -18,20 +20,35 @@ echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 </tr>
 <tr>
 <td id="content">
-<?php 
-makeMenu();    //Creates the main menu 
+<?php
+
+//makeMenu();    //Creates the main menu 
+
 ?>
 <div id="main">
 <div id="content2">
-
-<h2 class="link admin">Sätt lösenord på ditt konto</h2>
-<form action="../pages/index.php" method="post">
-        <label for="Lösenord">Lösenord</label><br />
-        <input id="password1" type="password" name="email" title="Epostadress"><br />
-        <label for="Pass1">Upprepa lösenord</label><br />
-        <input id="password2" type="password" name="password" title="Lösenord"><br />
-</form><div class="button verify"><h3>Skapa konto</h3></div>
-
+<?php
+$email = mysql_real_escape_string($_GET["email"]);
+$token = mysql_real_escape_string($_GET["token"]);
+$sql = "SELECT * FROM  `verification` WHERE  `email` 
+          LIKE  '{$email}' AND  `token` LIKE  '{$token}'";
+$result = mysql_query($sql);
+if(mysql_num_rows($result) == 1){
+?>
+<div id="PasswordContainer">
+<h2>Sätt lösenord på ditt konto</h2>
+<form id="PasswordForm">
+        <label for="Lösenord"><h6>Lösenord</h6></label><br />
+        <input id="password1" type="password" name="password" title="Password"><br />
+        <label for="Pass1"><h6>Upprepa lösenord</h6></label><br />
+        <input id="password2" type="password" name="password2" title="Lösenord"><br />
+	<input type="hidden" name="token" value="<?php echo $token; ?>">
+	<input type="hidden" name="email" value="<?php echo $email; ?>">
+</form><div class="button verify"><h3>Skapa konto</h3></div><br /><br /></div>
+<?php
+}
+else echo '<h2 class="warning">Your account was not verified and probably doesn\'t exist</h2>';
+?>
 </div>
 </div>
 <div id="bottom">

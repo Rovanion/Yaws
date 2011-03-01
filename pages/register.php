@@ -2,7 +2,7 @@
 require_once '../lib/libAuth.php';
 require_once '../lib/libJoy.php';
 
-makeHead('Joypeak - Skapa nya konton');
+makeHead('Joypeak - Skapa ett nytt konto');
 
 echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 ?>

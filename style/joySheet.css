@@ -130,7 +130,7 @@ div.button.small{
     padding: 5px 10px;
 }
 div.cancelButton{
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 div.openCloseContainer{
     margin-bottom: 1em;
@@ -210,6 +210,10 @@ div.kategori{
 }
 div.formContainer{
     clear: both;
+<<<<<<< HEAD
+=======
+    margin-top: 1em;
+>>>>>>> a3fef6c3b35c819394a7d0a66c38d71a1cd5d76f
 }
 li.contentListItem{
     clear: both;
@@ -281,7 +285,9 @@ h6.link:hover{
     cursor: pointer;
     color: #7FC6BC;
 }
-
+h1.warning,h2.warning,h3.warning,h4.warning,h5.warning,h6.warning{
+    color: red;
+}
 a{
     display:				block;
     color:					#7FC6BC;
