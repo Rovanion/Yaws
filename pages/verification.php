@@ -1,11 +1,12 @@
-<?php
+<?php 
 require_once '../lib/libAuth.php';
 require_once '../lib/libJoy.php';
 
-makeHead('Joypeak - Skapa nya konton');
+makeHead('Joypeak - Där allting är gratis förutom maten ');
 
 echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 ?>
+<script src="../lib/verifyScript.js" type="text/javascript" language="javascript"></script> 
 <table>
 <tr>
 <td id="header">
@@ -17,18 +18,19 @@ echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 </tr>
 <tr>
 <td id="content">
-<?php
-							//makeMenu();    //Creates the main menu
+<?php 
+makeMenu();    //Creates the main menu 
 ?>
 <div id="main">
 <div id="content2">
 
-<form action="../lib/operations.php" method="post">
-  <label for="email"><h3>Epostadress</h3></label><br />
-  <input type="input" id="email" name="email" title="email"><br />
-  <input type="hidden" name="submit" value="Register">
-  <input type="submit" value="Register"></input>
-</form><br />
+<h2 class="link admin">Sätt lösenord på ditt konto</h2>
+<form action="../pages/index.php" method="post">
+        <label for="Lösenord">Lösenord</label><br />
+        <input id="password1" type="password" name="email" title="Epostadress"><br />
+        <label for="Pass1">Upprepa lösenord</label><br />
+        <input id="password2" type="password" name="password" title="Lösenord"><br />
+</form><div class="button verify"><h3>Skapa konto</h3></div>
 
 </div>
 </div>
@@ -70,9 +72,9 @@ if(!$loggedIn){
 <div class="loginBox"><form action="../pages/index.php" method="post">
         <label for="Anv">Epostadress</label><br />
         <input class="login" type="input" name="email" title="Epostadress"><br />
-        <label for="Pass1">Lösenord</label><br />
-        <input class="login" type="password" name="password" title="Lösenord"><br />
-        <input class="login" type="submit" value="Login">
+	<label for="Pass1">Lösenord</label><br />
+	<input class="login" type="password" name="password" title="Lösenord"><br />
+	<input class="login" type="submit" value="Login">
 </form></div>
 <?php
 }
