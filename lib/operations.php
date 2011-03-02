@@ -125,14 +125,21 @@ else if($_POST["submit"] == "Register"){
   if(mysql_num_rows($result) == 0)
     registerNewUser();
 }
-else if($_POST["submit"] == "Validation"){
+else if($_POST["submit"] == "Verification"){
   $email = mysql_real_escape_string($_POST["email"]);
+  $token = mysql_real_escape_string($_POST["token"]);
   $password = mysql_real_escape_string($_POST["password"]);
   $md5password = md5($password);
-  $sql = "INSERT INTO `users` (`email`, `password`, `active`) 
+  $sql = "SELECT * FROM  `verification` WHERE  `email` 
+          LIKE  '{$email}' AND  `token` LIKE  '{$token}'";
+  $result = mysq_query($sql);
+  
+  if(mysq_num_rows($result) == 1){
+    $sql = "INSERT INTO `users` (`email`, `password`, `active`) 
           VALUES ('{$email}', '{$md5password}', '1');";
-  if(!mysql_query($sql))
-    reportError($sql);
+    if(!mysql_query($sql))
+      reportError($sql);
+  }
 }
 else{
   die('<p>You must be logged in to perform any operations. If you once were logged in, 

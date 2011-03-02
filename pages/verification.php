@@ -30,7 +30,7 @@ echo'>';
 <?php
 $user = mysql_real_escape_string($_GET[email]);
 $token = mysql_real_escape_string($_GET[token]);
-$sql = "SELECT * FROM  `users` WHERE  `email` 
+$sql = "SELECT * FROM  `verification` WHERE  `email` 
           LIKE  '{$email}' AND  `token` LIKE  '{$token}'";
 $result = mysql_query($sql);
 if(mysq_num_rows($result) == 1){
@@ -44,7 +44,7 @@ if(mysq_num_rows($result) == 1){
 </form><div class="button verify"><h3>Skapa konto</h3></div>
 <?php
 }
-else echo 'Your account was not verified';
+else echo '<h3>Your account was not verified and probably doesn\t exist</h3>';
 </div>
 </div>
 <div id="bottom">
