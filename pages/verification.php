@@ -4,7 +4,9 @@ require_once '../lib/libJoy.php';
 
 makeHead('Joypeak - Där allting är gratis förutom maten ');
 
-echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
+echo '<body'; 
+if($loggedIn) echo ' class="loggedIn"'; 
+echo'>';
 ?>
 <script src="../lib/verifyScript.js" type="text/javascript" language="javascript"></script> 
 <table>
@@ -18,12 +20,21 @@ echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 </tr>
 <tr>
 <td id="content">
-<?php 
-makeMenu();    //Creates the main menu 
+<?php
+
+//makeMenu();    //Creates the main menu 
+
 ?>
 <div id="main">
 <div id="content2">
-
+<?php
+$user = mysql_real_escape_string($_GET[email]);
+$token = mysql_real_escape_string($_GET[token]);
+$sql = "SELECT * FROM  `users` WHERE  `email` 
+          LIKE  '{$email}' AND  `token` LIKE  '{$token}'";
+$result = mysql_query($sql);
+if(mysq_num_rows($result) == 1){
+?>
 <h2 class="link admin">Sätt lösenord på ditt konto</h2>
 <form action="../pages/index.php" method="post">
         <label for="Lösenord">Lösenord</label><br />
@@ -31,7 +42,9 @@ makeMenu();    //Creates the main menu
         <label for="Pass1">Upprepa lösenord</label><br />
         <input id="password2" type="password" name="password" title="Lösenord"><br />
 </form><div class="button verify"><h3>Skapa konto</h3></div>
-
+<?php
+}
+else echo 'Your account was not verified';
 </div>
 </div>
 <div id="bottom">
