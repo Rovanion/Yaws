@@ -279,7 +279,9 @@ h6.link:hover{
     cursor: pointer;
     color: #7FC6BC;
 }
-
+h1.warning,h2.warning,h3.warning,h4.warning,h5.warning,h6.warning{
+    color: red;
+}
 a{
     display:				block;
     color:					#7FC6BC;
