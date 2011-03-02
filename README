@@ -13,7 +13,7 @@ PRIMARY KEY ( `email` )
 
 And the second table:
 
-CREATE TABLE `<insert database name her>`.`pages` (
+CREATE TABLE `<insert database name here>`.`pages` (
 `index` TINYINT NOT NULL COMMENT 'A unique number, the order of links',
 `title` TEXT NOT NULL COMMENT 'The shown title',
 `JStitle` TEXT NOT NULL COMMENT 'The cleaned title for code',
@@ -23,7 +23,7 @@ PRIMARY KEY ( `index` )
 
 And the third table:
 
-CREATE TABLE  `joypeak`.`verification` (
+CREATE TABLE  `<insert database name here>`.`verification` (
 `email` VARCHAR( 64 ) NOT NULL COMMENT  'The email adress',
 `token` VARCHAR( 32 ) NOT NULL COMMENT  'The verification code'
 ) ENGINE = MYISAM COMMENT =  'Table used for verifying accounts';
