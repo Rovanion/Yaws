@@ -2,6 +2,7 @@
 require_once '../lib/libJoy.php';
 require_once '../lib/libAuth.php';
 
+
 if(!isset($_POST["submit"])){
   if(isset($_GET["page"]))
     $table = mysql_real_escape_string($_GET["page"]);    //If there is a page variable, use it
@@ -17,6 +18,7 @@ if(!isset($_POST["submit"])){
     makeAddButton('Page', $table);
   }
 }
+
 
 //Function called to print out the content from an MySQL table
 //$table with the parent $parentToMatch.
@@ -86,14 +88,15 @@ function makeAdminInterface($post, $type){
           <div class="button no" id="' . $id. 'noButton"><h3>Nej</h3></div></div>';
     
     echo '<div class="formContainer" id="'. $id. 'FormContainer">
-            <form id="'. $id. 'Form" method=post action="../lib/operations.php">
-                <label for=title> Titel: </label> 
-       	        <input type="text" name="title" value="'. $post["title"]. '">
-       		<label for=content> Brödtext: </label> 
-	        <textarea name=content>'. $post["content"]. '</textarea>
+            <form id="'. $id. 'Form">
+                <label for=title><h6>Titel</h6></label> <br />
+       	        <input type="text" name="title" value="'. $post["title"]. '"><br />
+       		<label for=content><h6>Brödtext</h6></label> 
+	        <textarea name=content>'. $post["content"]. '</textarea><br />
                 <input type="hidden" name="index" value="'. $post["index"]. '" />
                 <input type="hidden" name="table" value="'. $table. '" />
                 <input type="hidden" name="submit" value="Spara">
+                <input type="hidden" name="type" value="'. $type. '">
     	    </form>
             <div class="button submit" id="'. $id. 'SubmitButton"><h3>Spara</h3></div>
             <div class="button cancelButton"><h3>Avbryt</h3></div>
@@ -116,11 +119,12 @@ function makeAdminInterface($post, $type){
        '<div class="button no" id="' . $id. 'noButton"><h3>Nej</h3></div></div>';
     
     echo '<div class="formContainer" id="'. $id. 'FormContainer">
-        	<form method=post action="../lib/operations.php">
-		    <label for=title> Titel: </label> 
+        	<form id="'. $id. 'Form">
+		    <label for=title><h6>Titel</h6></label><br />
 	      	    <input type="text" name="title" value="'. $post["title"]. '">
                     <input type="hidden" name="table" value="'. $table. '" />
                     <input type="hidden" name="index" value="'. $post["index"]. '" />
+                    <input type="hidden" name="type" value="'. $type. '">
                     <input type="hidden" name="submit" value="Spara">
 		</form>
                 <div class="button submit" id="'. $id. 'SubmitButton"><h3>Spara</h3></div>

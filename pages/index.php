@@ -65,22 +65,17 @@ if(!$loggedIn){
 ?>
 <h6 class="link admin">Administrera</h6>
 <div class="loginBox"><form action="../pages/index.php" method="post">
-        <label for="Anv">Epostadress</label><br />
+        <label for="Anv"><h6>Epostadress</h6></label><br />
         <input class="login" type="input" name="email" title="Epostadress"><br />
-	<label for="Pass1">Lösenord</label><br />
+	<label for="Pass1"><h6>Lösenord</h6></label><br />
 	<input class="login" type="password" name="password" title="Lösenord"><br />
 	<input class="login" type="submit" value="Login">
 </form></div>
 <?php
 }
 else{
-<<<<<<< HEAD
-  echo '<h6><a href="../pages/register.php">Skapa konto</a></h6><br />'.
-    '<h6><a href="../pages/logout.php">Logga ut</a></h6>';
-=======
   echo '<a href="../pages/register.php"><h6>Lägg till Admin</h6></a>';
   echo '<a href="../pages/logout.php"><h6>Logga ut</h6></a>';
->>>>>>> 2f6435083d6f22591684cd95bb557698f5647e0e
 }
 ?>
 </div>
