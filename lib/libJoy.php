@@ -19,7 +19,6 @@ function makeHead($title){    //This is the function that makes the head of the 
     echo('<script src="../lib/nicEdit.js" type="text/javascript" language="javascript"></script> 
           <script src="../lib/adminScript.js" type="text/javascript" language="javascript"></script>');
   }
-
   echo '</head>';
 }
 
@@ -33,7 +32,7 @@ function makeMenu(){    //This is the function that creates the main menu
 
   echo '<div id="top">';
   while($post = mysql_fetch_assoc($posts)){
-    if($post["index"] == 0){    //If it's the first menu item, give it the class left
+    if($post["index"] == 1){    //If it's the first menu item, give it the class left
       echo '<div class="menuItem left"><a href="index.php?page='. $post["JStitle"]. 
 	'"><h4>'. $post["title"]. '</h4></a></div>';
     }

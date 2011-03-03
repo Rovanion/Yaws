@@ -2,7 +2,6 @@
 require_once '../lib/libJoy.php';
 require_once '../lib/libAuth.php';
 
-
 if(!isset($_POST["submit"])){
   if(isset($_GET["page"]))
     $table = mysql_real_escape_string($_GET["page"]);    //If there is a page variable, use it
@@ -77,7 +76,7 @@ function makeAdminInterface($post, $type){
   global $table;
   $id = $post["JStitle"];
 
-  if($type == 0 || $type == 2 || $type == 4){ //If it's a text field
+  if($type == 0 || $type == 1 || $type == 2 || $type == 4){ //If it's a text field
     if($type != 1) 
       echo '<div class="button edit" id="'. $id. 'EditButton"><h3>Edit</h3></div>';
     echo '<div class="deleteContainer"><div class="button delete" id="'. $id. 'DeleteButton">
@@ -85,24 +84,24 @@ function makeAdminInterface($post, $type){
           <div class="yesNoContainer" id="'. $id. 'yesNoContainer"><h5>Är du säker?</h5>
           <div class="button yes" id="'. $id. 'yesButton"><h3>Ja</h3></div>
           <div class="button no" id="' . $id. 'noButton"><h3>Nej</h3></div></div>';
-
-    echo '<div class="formContainer" id="'. $id. 'FormContainer">
+    if($type != 1){
+      echo '<div class="formContainer" id="'. $id. 'FormContainer">
             <form id="'. $id. 'Form">';
-    if($type != 2)
-      echo     '<label for=title><h6>Titel</h6></label> <br />
-                <input type="text" name="title" value="'. $post["title"]. '"><br />';
-    if($type != 4)
-      echo     '<label for=content><h6>Brödtext</h6></label>
-                <textarea name=content>'. $post["content"]. '</textarea><br />';
-    echo        '<input type="hidden" name="index" value="'. $post["index"]. '" />
-                <input type="hidden" name="table" value="'. $table. '" />
-                <input type="hidden" name="submit" value="Spara">
-                <input type="hidden" name="type" value="'. $type. '">
-    	    </form>
-            <div class="button submit" id="'. $id. 'SubmitButton"><h3>Spara</h3></div>
-            <div class="button cancelButton"><h3>Avbryt</h3></div>
-        </div>';
-    
+      if($type != 2)
+	echo     '<label for=title><h6>Titel</h6></label> <br />
+                  <input type="text" name="title" value="'. $post["title"]. '"><br />';
+      if($type != 4)
+	echo     '<label for=content><h6>Brödtext</h6></label>
+                  <textarea name=content>'. $post["content"]. '</textarea><br />';
+      echo        '<input type="hidden" name="index" value="'. $post["index"]. '" />
+                  <input type="hidden" name="table" value="'. $table. '" />
+                  <input type="hidden" name="submit" value="Spara">
+                  <input type="hidden" name="type" value="'. $type. '">
+    	      </form>
+              <div class="button submit" id="'. $id. 'SubmitButton"><h3>Spara</h3></div>
+              <div class="button cancelButton"><h3>Avbryt</h3></div>
+          </div>';
+    }
   }
   else if($type == 3) echo 'FIX ME'; //FIXME
     
@@ -125,11 +124,11 @@ function makeAddButton($id){
             	    <label for=title><h6>Titel</h6></label><br /> 
        		    <input type="text" name="title">
                 </div><div class="contentContainer">
-                    <label for="content"><h6>Brödtext</h6></label> 
+                    <label for="content"><h6>Brödtext</h6></label><br /> 
 		    <textarea name="content" id="'. $id. 'TextArea"></textarea>
                 </div>
 		<input type="hidden" name="submit" value="Publicera">
-                <input type="hidden" name="table" value="'. $table. '" />
+                <input type="hidden" name="table" class="table" value="'. $table. '" />
                 <input type="hidden" name="parent" value="'. $id .'" />
 	    </form>
         <div class="button submit" id="'. $id. 'SubmitButton"><h3>Skapa</h3></div>

@@ -2,8 +2,6 @@
 require_once "../lib/libAuth.php";
 require_once "../lib/libJoy.php";
 
-print_r($_REQUEST);
-
 if($loggedIn){
   if(isset($_REQUEST["table"]))
       $table = mysql_real_escape_string($_REQUEST["table"]); 
@@ -43,13 +41,13 @@ if($loggedIn){
       $type = mysql_real_escape_string($_REQUEST["type"]);
       
       //To make sure that no empty fields are added to the table
-      if($title == '' || $JStitle == ''){
-	die('Du måste placera minst ett alphanumerisk tecken i både titel och innehållsfältet');
+      if($content == '' || $JStitle == ''){
+	die('Du måste placera minst ett alphanumerisk tecken i fältet');
       }
       
       $sql = "INSERT INTO `joypeak`.`{$table}` 
-           (`index` ,`type` ,`title` ,`JStitle` ,`content` ,`parent`)
-           VALUES ('{$numberOfPosts}', '{$type}', '{$title}', 
+           (`index` ,`type` ,`JStitle` ,`content` ,`parent`)
+           VALUES ('{$numberOfPosts}', '{$type}', 
            '{$JStitle}', '{$content}', '{$parent}');";
     }
     else if($_REQUEST["type"] == 3){
@@ -80,7 +78,7 @@ if($loggedIn){
     $table = mysql_real_escape_string($_REQUEST["table"]);
     $type = mysql_real_escape_string($_REQUEST["type"]);
     
-    if($type == 1 || $type == 2){
+    if($type == 0){
       $title = mysql_real_escape_string($_REQUEST["title"]);
       $JStitle = cleanForJavaScript($title);
       $content = mysql_real_escape_string($_REQUEST["content"]);
@@ -89,11 +87,26 @@ if($loggedIn){
       //To make sure that no empty fields are added to the table
       if($title === '' || $content === '' || $JStitle === '')
 	die('Du måste placera minst ett alphanumerisk tecken i både titel och innehållsfältet');
+
       $sql = "UPDATE `joypeak`.`{$table}` SET 
             `title` = '{$title}', `JStitle` = '{$JStitle}', `content` = '{$content}' 
             WHERE `{$table}`.`index` = {$index};";
-    }  
-    if($type == 4){
+    }
+    else if($type == 2){
+      $content = mysql_real_escape_string($_REQUEST["content"]);
+      $JStitle = cleanForJavaScript(substr($content, 0, 32));
+      $type = mysql_real_escape_string($_REQUEST["type"]);
+      $index = mysql_real_escape_string($_REQUEST["index"]);
+      
+      //To make sure that no empty fields are added to the table                                       
+      if($content == '' || $JStitle == '')
+        die('Du måste placera minst ett alphanumerisk tecken i fältet');
+
+      $sql = "UPDATE `joypeak`.`{$table}` SET
+            `JStitle` = '{$JStitle}', `content` = '{$content}'
+            WHERE `{$table}`.`index` = {$index};";
+    }
+    else if($type == 4){
       $title = mysql_real_escape_string($_REQUEST["title"]);
       $JStitle = cleanForJavaScript($title);
       $index = mysql_real_escape_string($_REQUEST["index"]);
