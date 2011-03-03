@@ -2,7 +2,7 @@
 require_once '../lib/libAuth.php';
 require_once '../lib/libJoy.php';
 
-makeHead('LAN - Låt blodet rinna! ');
+makeHead('LAN - Låt blodet flöda! ');
 
 echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 ?>

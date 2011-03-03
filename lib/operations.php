@@ -2,6 +2,8 @@
 require_once "../lib/libAuth.php";
 require_once "../lib/libJoy.php";
 
+print_r($_REQUEST);
+
 if($loggedIn){
   if(isset($_REQUEST["table"]))
       $table = mysql_real_escape_string($_REQUEST["table"]); 
@@ -14,7 +16,7 @@ if($loggedIn){
     $parent = mysql_real_escape_string($_REQUEST["parent"]);
     
     
-    if($_REQUEST["type"] == 0 || $_REQUEST["type"] == 2){
+    if($_REQUEST["type"] == 0){
       $title = mysql_real_escape_string($_REQUEST["title"]);
       $JStitle = cleanForJavaScript($title);
       $content = mysql_real_escape_string($_REQUEST["content"]);
@@ -34,6 +36,21 @@ if($loggedIn){
        $sql = "INSERT INTO `joypeak`.`{$table}` 
            (`index` ,`type` ,`parent` ,`JStitle`)
            VALUES ('{$numberOfPosts}', '1', '{$parent}', '{$numberOfPosts}');";
+    }
+    else if($_REQUEST["type"] == 2){
+      $content = mysql_real_escape_string($_REQUEST["content"]);
+      $JStitle = cleanForJavaScript(substr($content, 0, 32));    
+      $type = mysql_real_escape_string($_REQUEST["type"]);
+      
+      //To make sure that no empty fields are added to the table
+      if($title == '' || $JStitle == ''){
+	die('Du måste placera minst ett alphanumerisk tecken i både titel och innehållsfältet');
+      }
+      
+      $sql = "INSERT INTO `joypeak`.`{$table}` 
+           (`index` ,`type` ,`title` ,`JStitle` ,`content` ,`parent`)
+           VALUES ('{$numberOfPosts}', '{$type}', '{$title}', 
+           '{$JStitle}', '{$content}', '{$parent}');";
     }
     else if($_REQUEST["type"] == 3){
       //The stuff that enters an image into the database
