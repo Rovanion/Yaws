@@ -13,7 +13,8 @@ function makeHead($title){    //This is the function that makes the head of the 
 	    	
 	    <script src="../lib/jquery.js" type="text/javascript" language="javascript"></script>
 	    <script src="../lib/jquery.easing.js" type="text/javascript" language="javascript"></script>
-            <script src="../lib/joyScript.js" type="text/javascript" language="javascript"></script>');
+            <script src="../lib/joyScript.js" type="text/javascript" language="javascript"></script>
+            <script src="../lib/jquery.lint.js" type="text/javascript" language="javascript"></script>');  //Remove this on production setup
 
   if($loggedIn){
     echo('<script src="../lib/nicEdit.js" type="text/javascript" language="javascript"></script> 
