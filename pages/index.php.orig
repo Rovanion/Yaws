@@ -2,7 +2,7 @@
 require_once '../lib/libAuth.php';
 require_once '../lib/libJoy.php';
 
-makeHead('LAN - Låt blodet flöda! ');
+makeHead('LAN - Låt blodet rinna! ');
 
 echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 ?>
@@ -39,16 +39,16 @@ include '../pages/content.php'; //Creates the main content of the page
 <div id="footer">
 <div class="foot"><h6>
   Kontakt <br />
-  Telefon: 0910<br />
-  Fax: 0910-32822<br />
-  Adress: Spång. 5<br />
-  Herpa Derpa
+  Telefon: 0910-32883<br />
+  Fax: 0910-32844<br />
+  Adress: Spångatan 5<br />
+  Herpa Derpa Merpa
 </h6>
 </div>
 <div class="spacer"></div>
 <div class="foot"><h6>
   Design <br />
-  Rovanion Luckey
+  Rovanin Luckey
 </h6>
 </div>
 <div class="spacer"></div>
@@ -65,17 +65,22 @@ if(!$loggedIn){
 ?>
 <h6 class="link admin">Administrera</h6>
 <div class="loginBox"><form action="../pages/index.php" method="post">
-        <label for="Anv"><h6>Epostadress</h6></label><br />
+        <label for="Anv">Epostadress</label><br />
         <input class="login" type="input" name="email" title="Epostadress"><br />
-	<label for="Pass1"><h6>Lösenord</h6></label><br />
+	<label for="Pass1">Lösenord</label><br />
 	<input class="login" type="password" name="password" title="Lösenord"><br />
 	<input class="login" type="submit" value="Login">
 </form></div>
 <?php
 }
 else{
+<<<<<<< HEAD
+  echo '<h6><a href="../pages/register.php">Skapa konto</a></h6><br />'.
+    '<h6><a href="../pages/logout.php">Logga ut</a></h6>';
+=======
   echo '<a href="../pages/register.php"><h6>Lägg till Admin</h6></a>';
   echo '<a href="../pages/logout.php"><h6>Logga ut</h6></a>';
+>>>>>>> 2f6435083d6f22591684cd95bb557698f5647e0e
 }
 ?>
 </div>

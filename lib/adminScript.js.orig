@@ -10,7 +10,7 @@ $(document).ready(function(){
 	setTimeout(function(){$(name).fadeIn(fadeInTime);}, fadeOutTime);
     });
     $('.no').click(function(){
-	yesNoContainer.fadeOut(fadeOutTime);
+	$('.yesNoContainer').fadeOut(fadeOutTime);
 	setTimeout(function(){$('.delete').fadeIn(500);}, fadeOutTime);
     });
     $('.yes').click(function(){
@@ -23,7 +23,7 @@ $(document).ready(function(){
 	setTimeout(function(){$(Iname).remove();}, fadeOutTime);
 	$.post('../lib/operations.php', 
 	       { submit: "Delete", JStitle: name, table: pagename},
-	       function(data){if(data != '1'){ (data); };
+	       function(data){if(data != '1') document.write(data);
         });
     });
 
@@ -33,7 +33,10 @@ $(document).ready(function(){
 	var Tname = name + 'Text';
 	var Dname = name + 'DeleteButton';
 	var Fname = name + 'FormContainer';
+<<<<<<< HEAD
 
+=======
+>>>>>>> a3fef6c3b35c819394a7d0a66c38d71a1cd5d76f
 	$(this).fadeOut(fadeOutTime); 
 	$(name).fadeOut(fadeOutTime);
 	$(Tname).fadeOut(fadeOutTime);
@@ -43,19 +46,15 @@ $(document).ready(function(){
     $('.newButton').click(function(){
 	var name = $(this).attr('id');
 	name = name.substring(0, (name.length - 9));
-	var Iname = '#' + name + 'FormContainer';
-	var Fname = '#' + name + 'Form';
+	var Iname = '#' + name + 'InputContainer';
+	var Nname = '#' + name + 'NewForm';
 	var Tname = '#' + name + 'Type';
 	var type = $(Tname).val();
 	var pagename = $('.table').val();
 
-	$(Fname).append('<input type="hidden" name="type" value="' + type + '" />');
+	$(Nname).append('<input type="hidden" name="type" value="' + type + '" />');
 
-	if(type == 0 || type == 2 || type == 4){
-	    if(type == 2)
-		$('.titleContainer').hide();
-	    else if(type == 4)
-		$('.contentContainer').hide();
+	if(type == 0 || type == 2){
 	    $(this).fadeOut(fadeOutTime);
 	    $(Tname).fadeOut(fadeOutTime);
 	    setTimeout(function(){$(Iname).fadeIn(fadeInTime);}, fadeOutTime);
@@ -77,14 +76,14 @@ $(document).ready(function(){
 	    //Show upload and linking form
 	}
 	else if(type == 4){
-
+	    $('.textareaContainer').hide();
 	    $(this).fadeOut(fadeOutTime);
 	    $(Tname).fadeOut(fadeOutTime);
 	    setTimeout(function(){$(Iname).fadeIn(fadeInTime);}, fadeOutTime);
 	}
     });
     $('.cancelButton').click(function(){
-	formContainer.fadeOut(fadeOutTime);
+	$('.formContainer').fadeOut(fadeOutTime);
 	$('#hiddenType').remove();
 	setTimeout(function(){
 	    $('.button').fadeIn(fadeInTime);
@@ -92,17 +91,21 @@ $(document).ready(function(){
 	    $('.X').fadeIn(fadeInTime);
 	    $('.hidden').fadeIn(fadeInTime);
 	}, fadeOutTime);
-	$('.contentTextArea').show();
-	$('.titleContainer').show();
+	$('.textareaContainer').show();
     });
     $('.submit').click(function(){
 	var name = $(this).attr('id');
 	name = name.substring(0, (name.length - 12));
-	var Fname = '#' + name + 'Form';
+	var Fname = name + 'Form';
+<<<<<<< HEAD
+	var form = $(Fname).serialize();
+
+	$('.formContainer').fadeOut(fadeOutTime);
+=======
 	var formData = $(Fname).serialize();
-	var textAreaData = $(Fname1).find('.nicEdit-main').html();
 	
-	formContainer.fadeOut(fadeOutTime);
+	$('.FormContainer').fadeOut(fadeOutTime);
+>>>>>>> a3fef6c3b35c819394a7d0a66c38d71a1cd5d76f
 	setTimeout(function(){
 	    $('.button').fadeIn(fadeInTime);
 	    $('.type').fadeIn(fadeInTime);
@@ -110,8 +113,13 @@ $(document).ready(function(){
 	    $('.hidden').fadeIn(fadeInTime);
 	}, fadeOutTime);
     	
-	$.post('../lib/operations.php', {formData: formData, 
-              textAreaData: textAreaData, parent: name },
-	      function(data){if(data != '1') alert(data);});
-    });
+<<<<<<< HEAD
+/*	$.post('../lib/operations.php', 
+	       { parent: name, formContent: form},
+=======
+	$.get('../lib/operations.php?' + formData, 
+	      { parent: name, submit: 'Spara'},
+>>>>>>> a3fef6c3b35c819394a7d0a66c38d71a1cd5d76f
+	       function(data){if(data != '1')document.write(data)});
+  */  });
 });

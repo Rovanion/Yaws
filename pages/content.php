@@ -1,22 +1,25 @@
 <?php
+require_once '../lib/settings.php';
 require_once '../lib/libJoy.php';
 require_once '../lib/libAuth.php';
 
 if(!isset($_POST["submit"])){
   if(isset($_GET["page"]))
     $table = mysql_real_escape_string($_GET["page"]);    //If there is a page variable, use it
-  else
-    $table = "KlartpojkenskahaLAN";        //Otherwise go to the main page
-  $parentToMatch = 'Page';
-  
-  echo '<ul>';
-  createContent('');
-  echo '</ul>';
-
-  if($loggedIn){
-    makeAddButton('Page', $table);
-  }
 }
+else
+  $table = DefaultPage;        //Otherwise go to the main page
+$parentToMatch = 'Page';
+echo DefaultPage;
+
+  echo '<ul>';
+createContent('');
+echo '</ul>';
+
+if($loggedIn){
+  makeAddButton('Page', $table);
+}
+
 
 
 //Function called to print out the content from an MySQL table

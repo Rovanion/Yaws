@@ -3,22 +3,22 @@ require_once "../lib/libAuth.php";
 require_once "../lib/libJoy.php";
 
 if($loggedIn){
-  if(isset($_REQUEST["table"]))
-      $table = mysql_real_escape_string($_REQUEST["table"]); 
+  if(isset($_POST["table"]))
+      $table = mysql_real_escape_string($_POST["table"]); 
   else 
     $table = 'pages';
 
   //The fallowing creates a new entry on the page
-  if($_REQUEST["submit"] == "Publicera"){
+  if($_POST["submit"] == "Publicera"){
     $numberOfPosts = getNextIndex($table);
-    $parent = mysql_real_escape_string($_REQUEST["parent"]);
+    $parent = mysql_real_escape_string($_POST["parent"]);
     
     
-    if($_REQUEST["type"] == 0){
-      $title = mysql_real_escape_string($_REQUEST["title"]);
+    if($_POST["type"] == 0){
+      $title = mysql_real_escape_string($_POST["title"]);
       $JStitle = cleanForJavaScript($title);
-      $content = mysql_real_escape_string($_REQUEST["content"]);
-      $type = mysql_real_escape_string($_REQUEST["type"]);
+      $content = mysql_real_escape_string($_POST["content"]);
+      $type = mysql_real_escape_string($_POST["type"]);
       
       //To make sure that no empty fields are added to the table
       if($title == '' || $content == '' || $JStitle == ''){
@@ -30,15 +30,15 @@ if($loggedIn){
            VALUES ('{$numberOfPosts}', '{$type}', '{$title}', 
            '{$JStitle}', '{$content}', '{$parent}');";
     }
-    else if($_REQUEST["type"] == 1){
+    else if($_POST["type"] == 1){
        $sql = "INSERT INTO `joypeak`.`{$table}` 
            (`index` ,`type` ,`parent` ,`JStitle`)
            VALUES ('{$numberOfPosts}', '1', '{$parent}', '{$numberOfPosts}');";
     }
-    else if($_REQUEST["type"] == 2){
-      $content = mysql_real_escape_string($_REQUEST["content"]);
+    else if($_POST["type"] == 2){
+      $content = mysql_real_escape_string($_POST["content"]);
       $JStitle = cleanForJavaScript(substr($content, 0, 32));    
-      $type = mysql_real_escape_string($_REQUEST["type"]);
+      $type = mysql_real_escape_string($_POST["type"]);
       
       //To make sure that no empty fields are added to the table
       if($content == '' || $JStitle == ''){
@@ -50,13 +50,13 @@ if($loggedIn){
            VALUES ('{$numberOfPosts}', '{$type}', 
            '{$JStitle}', '{$content}', '{$parent}');";
     }
-    else if($_REQUEST["type"] == 3){
+    else if($_POST["type"] == 3){
       //The stuff that enters an image into the database
     }
-    else if($_REQUEST["type"] == 4){
-      $title = mysql_real_escape_string($_REQUEST["title"]);
+    else if($_POST["type"] == 4){
+      $title = mysql_real_escape_string($_POST["title"]);
       $JStitle = cleanForJavaScript($title);
-      $type = mysql_real_escape_string($_REQUEST["type"]);
+      $type = mysql_real_escape_string($_POST["type"]);
 
       //To make sure that no empty fields are added to the table
       if($title == '' || $JStitle == ''){
@@ -74,15 +74,15 @@ if($loggedIn){
   }
 
   //The fallowing updates an entry on a page
-  else if($_REQUEST["submit"] == "Spara"){
-    $table = mysql_real_escape_string($_REQUEST["table"]);
-    $type = mysql_real_escape_string($_REQUEST["type"]);
+  else if($_POST["submit"] == "Spara"){
+    $table = mysql_real_escape_string($_POST["table"]);
+    $type = mysql_real_escape_string($_POST["type"]);
     
     if($type == 0){
-      $title = mysql_real_escape_string($_REQUEST["title"]);
+      $title = mysql_real_escape_string($_POST["title"]);
       $JStitle = cleanForJavaScript($title);
-      $content = mysql_real_escape_string($_REQUEST["content"]);
-      $index = mysql_real_escape_string($_REQUEST["index"]);
+      $content = mysql_real_escape_string($_POST["content"]);
+      $index = mysql_real_escape_string($_POST["index"]);
 
       //To make sure that no empty fields are added to the table
       if($title === '' || $content === '' || $JStitle === '')
@@ -93,10 +93,10 @@ if($loggedIn){
             WHERE `{$table}`.`index` = {$index};";
     }
     else if($type == 2){
-      $content = mysql_real_escape_string($_REQUEST["content"]);
+      $content = mysql_real_escape_string($_POST["content"]);
       $JStitle = cleanForJavaScript(substr($content, 0, 32));
-      $type = mysql_real_escape_string($_REQUEST["type"]);
-      $index = mysql_real_escape_string($_REQUEST["index"]);
+      $type = mysql_real_escape_string($_POST["type"]);
+      $index = mysql_real_escape_string($_POST["index"]);
       
       //To make sure that no empty fields are added to the table                                       
       if($content == '' || $JStitle == '')
@@ -107,9 +107,9 @@ if($loggedIn){
             WHERE `{$table}`.`index` = {$index};";
     }
     else if($type == 4){
-      $title = mysql_real_escape_string($_REQUEST["title"]);
+      $title = mysql_real_escape_string($_POST["title"]);
       $JStitle = cleanForJavaScript($title);
-      $index = mysql_real_escape_string($_REQUEST["index"]);
+      $index = mysql_real_escape_string($_POST["index"]);
 
       //To make sure that no empty fields are added to the table
       if($title === '' || $JStitle === '')
@@ -123,18 +123,18 @@ if($loggedIn){
     else reportError($sql);
   }
   //The fallowing creates a whole new page
-  else if($_REQUEST["submit"] == "Skapa"){
+  else if($_POST["submit"] == "Skapa"){
     $numberOfPosts = getNextIndex($table);
-    $title = mysql_real_escape_string($_REQUEST["title"]);
+    $title = mysql_real_escape_string($_POST["title"]);
     $JStitle = cleanForJavaScript($title);
     
-    if($title === '' || $JStitle === ''){//To make sure that no empty fields are added to the table
+    if($title === '' || $JStitle === '')//To make sure that no empty fields are added to the table
       die('Du måste placera minst ett alfanumerisk tecken i sidonamnet');
-    }
-    $sql = "INSERT INTO `joypeak`.`pages` (`index`, `title`, `JStitle`) 
+    
+    $sql = "INSERT INTO `pages` (`index`, `title`, `JStitle`) 
             VALUES ('{$numberOfPosts}', '{$title}', '$JStitle');";
-    $success = mysql_query($sql);
-    if(!$success) {
+   
+    if(!mysql_query($sql)) {
       reportError($sql);
 	die('Inserting the new page into the database failed');
     }
@@ -147,34 +147,38 @@ if($loggedIn){
         `parent` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT 'The parent of the object',
         PRIMARY KEY (`index`), UNIQUE KEY `JStitle` (`JStitle`(50))
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
-    $success = mysql_query($sql);
-    if($success) header("Location: ../pages/index.php?page=". $table);
-    else reportError($sql);
+    if(mysql_query($sql))
+      header("Location: ../pages/index.php?page=". $table);
+    else 
+      reportError($sql);
   }
 
   //Deletes the requested entry
-  else if($_REQUEST["submit"] == "Delete"){
-    $JStitle = mysql_real_escape_string($_REQUEST["JStitle"]);
-    $table = mysql_real_escape_string($_REQUEST["table"]);
-    $sql = "DELETE FROM `joypeak`.`{$table}` WHERE `JStitle` = '{$JStitle}'";
-    $success = mysql_query($sql);
-    if(!$success) reportError($sql);
-    else echo '1';
+  else if($_POST["submit"] == "Delete"){
+    $JStitle = mysql_real_escape_string($_POST["JStitle"]);
+    $table = mysql_real_escape_string($_POST["table"]);
+    $sql = "DELETE FROM `{$table}` WHERE `JStitle` = '{$JStitle}'";
+    $sql2 = "DELETE FROM `{$table}` WHERE `parent` = '{$JStitle}'";
+
+    if(!mysql_query($sql) || !mysql_query($sql2)) 
+      reportError($sql);
+    else 
+      echo '1';
   }
-  else if($_REQUEST["submit"] == "Register"){
+  else if($_POST["submit"] == "Register"){
     registerNewUser();
   }
-  else if($_REQUEST["submit"] == "Register"){
+  else if($_POST["submit"] == "Register"){
    validateNewUser();
   }
 }
-else if($_REQUEST["submit"] == "Register"){
+else if($_POST["submit"] == "Register"){
   $sql = "SELECT * FROM `users`";
   $result = mysql_query($sql);
   if(mysql_num_rows($result) == 0)
     registerNewUser();
 }
-else if($_REQUEST["submit"] == "Verification"){
+else if($_POST["submit"] == "Verification"){
   $sql = "SELECT * FROM `users`";
   $result = mysql_query($sql);
   if(mysql_num_rows($result) == 0)
@@ -190,7 +194,7 @@ else{
 
 function reportError($sql){
   echo '<p>Följande indata gavs: <br />';
-  print_r($_REQUEST);
+  print_r($_POST);
   echo "<br /><br />A tiny tiny error accured when trying to add the new entry: <br /><br /><b>". 
     mysql_error(). ': </b><br /><br />'. $sql;
   die();
@@ -207,7 +211,7 @@ function getNextIndex($table){
 }
 
 function registerNewUser(){
-  $email = mysql_real_escape_string($_REQUEST["email"]);
+  $email = mysql_real_escape_string($_POST["email"]);
   $validated = filter_var($email, FILTER_VALIDATE_EMAIL);
   if($validated){ //Check if the email is correct                       
     $token = createToken(32);
@@ -244,8 +248,8 @@ function validateNewUser(){
     if(!mysql_query($sql))
       reportError($sql);
     else{
-      $_REQUEST["email"] = $email;
-      $_REQUEST["password"] = $password;
+      $_POST["email"] = $email;
+      $_POST["password"] = $password;
       checkLogin();
       echo '1';
     }
