@@ -1,7 +1,7 @@
 <?php
-DefaultPage = "Ericssida";
-Database = "joypeak";
-DatabaseUserName = "Rovanion";
-DatabasePassword = "underbar";
+define('DefaultPage', 'Ericssida');
+define('Database', 'joypeak');
+define('DatabaseUserName', 'Rovanion');
+define('DatabasePassword', 'underbar');
 
 ?>
