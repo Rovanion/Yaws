@@ -3,7 +3,7 @@ require_once '../lib/libAuth.php';
 require_once '../lib/libJoy.php';
 require_once '../lib/settings.php';
 
-if(DefaultPage == 'NotSet'){
+if($loggedIn && DefaultPage == 'NotSet'){
   header('Location:../pages/theAddAPagePage.php');
 }
 
