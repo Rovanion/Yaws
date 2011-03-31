@@ -1,0 +1,23 @@
+The fallowing programs are needed to run YAWS:
+
+PHP 5 with mcrypt
+MySQL
+A web server such as Apache2
+A Mail Transfer Agent such as postfix
+
+
+To install the previously mentioned on a Debian-based distribution, such as Ubuntu, run the fallowing:
+
+sudo apt-get update && sudo apt-get install apache2 php5 php5-mysql libapache2-mod-php5 mysql-server mysql-client
+
+Instructions for other distributions can easily be found by googling "LAMP <distribution name>.
+
+
+After that the requirements are set up, copy the YAWS files into a folder served by your http server. In Debian, one such would by default be /var/www. 
+
+Then edit ../lib/settings.php and enter your database username and password. If you went with another than the default database name, also change that. If the project is placed in /var/www, the fallowing command will open the settings file:
+
+sudo nano /var/www/lib/settings.php
+
+
+After this is done, you should point your browser to your domain name or if you installed locally, localhost or 127.0.0.1. YAWS will continue the configuration from this point and on.

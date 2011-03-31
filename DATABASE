@@ -1,0 +1,62 @@
+The fallowing file documents database structures and the SQL sequences that create the structures needed to run YAWS. These are by default set up by the website on the first run.
+
+The default database name is joypeak. If you want to change that name, you will have to modify makeMySQLConnection() in ./lib/libAuth.php according to your wishes. You will then have to put that name instead of <insert database name here> in the fallowing SQL commands before you execute them.
+
+The easiest way to run these commands, if you don't know how, is to install phpMyAdmin, log in, press the SQL tab on the main page and paste the commands into the text box and then press go. They should be executed in the order they are listed below.
+
+
+This sets up a database with the name <insert database name here>, the default database name is joypeak:
+
+CREATE DATABASE `<insert database name here>`
+
+The fallowing creates the first table:
+
+CREATE TABLE `<insert database name here>`.`users` (
+`email` VARCHAR( 128 ) NOT NULL ,
+`password` VARCHAR( 32 ) NOT NULL ,
+`active` TINYINT( 1 ) NULL ,
+PRIMARY KEY ( `email` )
+) ENGINE = MYISAM DEFAULT CHARSET=utf8 COMMENT = 'The table containing the site administrators and their encrypted passwords';
+
+
+And the second table:
+
+CREATE TABLE `<insert database name here>`.`pages` (
+`index` TINYINT NOT NULL COMMENT 'A unique number, the order of links',
+`title` TEXT NOT NULL COMMENT 'The shown title',
+`JStitle` TEXT NOT NULL COMMENT 'The cleaned title for code',
+PRIMARY KEY ( `index` )
+) ENGINE = MYISAM COMMENT = 'The table containing the pages of the website';
+
+
+And the third table:
+
+CREATE TABLE  `<insert database name here>`.`verification` (
+`email` VARCHAR( 64 ) NOT NULL COMMENT  'The email adress',
+`token` VARCHAR( 32 ) NOT NULL COMMENT  'The verification code'
+) ENGINE = MYISAM COMMENT =  'Table used for verifying accounts';
+
+
+
+
+The fallowing table is included for documentational purposes soely, it will be automaticly be created for each page that is added to the website
+
+CREATE TABLE IF NOT EXISTS `<page name>` (
+  `index` tinyint(4) NOT NULL COMMENT 'The order of posts',
+  `type` tinyint(2) NOT NULL COMMENT 'The type of the content',
+  `title` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT 'The title of the post',
+  `JStitle` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT 'The cleaned title',
+  `content` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT 'The content of the post',
+  `parent` text CHARACTER SET utf8 COLLATE utf8_bin COMMENT 'The parent of the object',
+  PRIMARY KEY (`index`),
+  UNIQUE KEY `JStitle` (`JStitle`(50))
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+Register over the different types of entries(the default is as previously mentioned joypeak)> in the page table:
+
+0 - A title and hidden paragraph that is opened by clicking on the paragraph.
+1 - Open and Close all buttons for the hidden paragraphs.
+2 - A title or paragraph, or both. Heck why not two of them both!
+3 - An image with caption.
+4 - A title with hidden objects underneath, such as those of the type 0 and 2.

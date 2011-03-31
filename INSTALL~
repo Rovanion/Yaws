@@ -1,0 +1,10 @@
+The fallowing programs are needed to run YAWS:
+
+PHP 5 with mcrypt
+MySQL
+A web server such as Apache2
+A Mail Transfer Agent such as postfix
+
+To install the previously mentioned on a Debian-based distribution, such as Ubuntu, run the fallowing:
+
+sudo apt-get update && sudo apt-get install apache2 php5 php5-mysql libapache2-mod-php5 mysql-server mysql-client
