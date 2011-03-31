@@ -1,5 +1,5 @@
 <?php
-define('DefaultPage', 'Ericssida');
+define('DefaultPage', 'NotSet');
 define('Database', 'joypeak');
 define('DatabaseUserName', '');
 define('DatabasePassword', '');

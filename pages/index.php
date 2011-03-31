@@ -3,7 +3,12 @@ require_once '../lib/libAuth.php';
 require_once '../lib/libJoy.php';
 require_once '../lib/settings.php';
 
-makeHead('LAN - Låt blodet flöda! ');
+if(DefaultPage == 'NotSet'){
+  header('Location:../pages/theAddAPagePage.php');
+}
+
+makeHead('YAWS - Den där filmen som baklänges handlar om en haj 
+som spyr upp människor tills dom öppnar en strand ');
 
 echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 ?>
@@ -25,7 +30,7 @@ makeMenu();    //Creates the main menu
 <div id="content2">
 <?php
 
-include '../pages/content.php'; //Creates the main content of the page
+include '../lib/content.php'; //Creates theb main content of the page
 
 ?>
 </div>
