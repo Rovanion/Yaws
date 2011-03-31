@@ -27,7 +27,7 @@ function makeMenu(){    //Function that creates the main menu
   global $loggedIn;    //Defined in ../lib/libAuth.php
 
   $sql = "SELECT * FROM `pages` ORDER BY `index`";
-  mysql_query($sql) or print("MySQLQuery bailed in ../lib/libJoy.php: ". mysql_error());
+  $posts = mysql_query($sql) or print("MySQLQuery bailed in ../lib/libJoy.php: ". mysql_error());
 
   echo '<div id="top">';
   while($post = mysql_fetch_assoc($posts)){
@@ -46,7 +46,7 @@ function makeMenu(){    //Function that creates the main menu
   echo  '<div class="menuItem right"><a href="../pages/nonExisting.php"><h4>Frivillig</h4></a></div>
  	 </div>';
 
-  if(mysql_num_rows($posts) != 0){
+  if(mysql_num_rows($posts) == 0){
     $sql = "SELECT * FROM `users`";
     $rows = mysql_query($sql);
     if(mysql_num_rows($rows) == 0){
