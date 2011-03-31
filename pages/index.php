@@ -1,6 +1,7 @@
 <?php 
 require_once '../lib/libAuth.php';
 require_once '../lib/libJoy.php';
+require_once '../lib/settings.php';
 
 makeHead('LAN - Låt blodet flöda! ');
 
@@ -10,7 +11,7 @@ echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 <tr>
 <td id="header">
 <div id="head">
-<h1>ASHUUUUUUUM!</h1>
+<h1>Yet Another WebSite</h1>
 <div class="bottom"></div>
 </div>
 </td>

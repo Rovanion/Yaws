@@ -2,8 +2,7 @@
 function makeHead($title){    //This is the function that makes the head of the page
   global $loggedIn;
 
-  echo('
-	<!DOCTYPE HTML>
+  echo('<!DOCTYPE HTML>
 	<html>
             <head>
 	    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
@@ -14,7 +13,8 @@ function makeHead($title){    //This is the function that makes the head of the 
 	    <script src="../lib/jquery.js" type="text/javascript" language="javascript"></script>
 	    <script src="../lib/jquery.easing.js" type="text/javascript" language="javascript"></script>
             <script src="../lib/joyScript.js" type="text/javascript" language="javascript"></script>
-            <script src="../lib/jquery.lint.js" type="text/javascript" language="javascript"></script>');  //Remove this on production setup
+            <!-- Remove jquery.lint.js on production setups -->
+            <script src="../lib/jquery.lint.js" type="text/javascript" language="javascript"></script>');  
 
   if($loggedIn){
     echo('<script src="../lib/nicEdit.js" type="text/javascript" language="javascript"></script> 
@@ -23,13 +23,11 @@ function makeHead($title){    //This is the function that makes the head of the 
   echo '</head>';
 }
 
-function makeMenu(){    //This is the function that creates the main menu
-  global $loggedIn;
+function makeMenu(){    //Function that creates the main menu
+  global $loggedIn;    //Defined in ../lib/libAuth.php
 
   $sql = "SELECT * FROM `pages` ORDER BY `index`";
-  $posts = mysql_query($sql);
-  if($posts == false) print "MySQLQuery bailed: "; mysql_error();
-  
+  mysql_query($sql) or print("MySQLQuery bailed in ../lib/libJoy.php: ". mysql_error());
 
   echo '<div id="top">';
   while($post = mysql_fetch_assoc($posts)){
