@@ -21,12 +21,14 @@ makeHead('The Add A Page Page - Where pages are born');
   <td id="content">
    <?php makeMenu();    // Creates the main menu ?>
   <div id="main">
-  <div id="content">
-  <form method=post action="../lib/operations.php">
-      <label for="titel"> Titel: </label> 
-      <input type="text" name="title">
+  <div id="content2">
+  <br />  <br />  <br />  <br />
+  <form method="post" action="../lib/operations.php">
+      <label for="titel"><h2><b> Titel: </b></h2> </label> <br />
+      <input type="text" name="title"><br />
       <input type="submit" name="submit" value="Skapa">
   </form>	
+  <br />  <br />  <br />  <br />
   </div>				
   </div>
   <div id="bottom">
