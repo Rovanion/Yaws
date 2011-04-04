@@ -3,6 +3,7 @@ require_once "../lib/libAuth.php";
 require_once "../lib/libJoy.php";
 
 if($loggedIn){
+  print_r($_POST);
   if(isset($_POST["table"]))
       $table = mysql_real_escape_string($_POST["table"]); 
   else 
@@ -128,7 +129,16 @@ if($loggedIn){
     $title = mysql_real_escape_string($_POST["title"]);
     $JStitle = cleanForJavaScript($title);
     
-    if($title === '' || $JStitle === '')//To make sure that no empty fields are added to the table
+    //If there are no previous pages, set this as the default page
+    $sql = "SELECT * FROM pages";
+    if(mysql_num_rows(mysql_query($sql)) == 1){
+      $lines = file('../lib/settings.php');
+      $lines[1];
+    }
+	       
+
+    //To make sure that no empty fields are added to the table
+    if($title === '' || $JStitle === '')
       die('Du måste placera minst ett alfanumerisk tecken i sidonamnet');
     
     $sql = "INSERT INTO `pages` (`index`, `title`, `JStitle`) 
@@ -168,7 +178,7 @@ if($loggedIn){
   else if($_POST["submit"] == "Register"){
     registerNewUser();
   }
-  else if($_POST["submit"] == "Register"){
+  else if($_POST["submit"] == "Validate"){
    validateNewUser();
   }
 }

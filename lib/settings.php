@@ -1,7 +1,7 @@
 <?php
-define('DefaultPage', 'NotSet');
+define('DefaultPage', 'derp');
 define('Database', 'joypeak');
-define('DatabaseUserName', 'insert user name here');
-define('DatabasePassword', 'insert password here');
+define('DatabaseUserName', 'root');
+define('DatabasePassword', 'underbar');
 
 ?>

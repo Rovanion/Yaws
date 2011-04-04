@@ -68,9 +68,9 @@ if(!$loggedIn){
 ?>
 <h6 class="link admin">Administrera</h6>
 <div class="loginBox"><form action="../pages/index.php" method="post">
-        <label for="Anv">Epostadress</label><br />
+        <label for="email">Epostadress</label><br />
         <input class="login" type="input" name="email" title="Epostadress"><br />
-        <label for="Pass1">Lösenord</label><br />
+        <label for="password">Lösenord</label><br />
         <input class="login" type="password" name="password" title="Lösenord"><br />
         <input class="login" type="submit" value="Login">
 </form></div>

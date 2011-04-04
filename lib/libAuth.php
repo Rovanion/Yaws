@@ -85,15 +85,13 @@ function login(){
     $user = mysql_real_escape_string($_POST["email"]);
     $md5password = md5($password);
     $sql = "SELECT * FROM users WHERE email='{$user}' 
-		AND password='{$md5password}'";
+	    AND password='{$md5password}'";
 
-    mysql_query($sql) or //Run query and continue if it succeeds, or print the error.
+    $result = mysql_query($sql) or //Run query and continue if it succeeds, or print the error.
       print "Falken anfaller! Följande SQL-sats är felaktig:<br />". $sql.
-	'<br /><br /> Följande felmeddelande gavs:'. mysql_error();
-    
-    $count = mysql_num_rows($result);
+	    '<br /><br /> Följande felmeddelande gavs:'. mysql_error();
 		
-    if ($count == 1){
+    if (mysql_num_rows($result) == 1){
       $_SESSION["email"] = $_POST["email"];
       $_SESSION["password"] = $md5password;
     }
