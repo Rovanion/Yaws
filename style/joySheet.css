@@ -34,7 +34,7 @@ h1,h2,h3,h4,h5,h6 {
     font-weight: normal;
     font-size: 100%;
 }
-q:before,q:after {
+q:before, q:after {
     content:'';
 }
 abbr,acronym { 
@@ -109,7 +109,7 @@ div#footer{
 }
 div.button{
     display: block;
-    float:left;
+    float: right;
     border: 1px solid #8EC1DA;
     background-color: #DDEEF6;
     border-radius: 4px;
@@ -137,9 +137,6 @@ div.cancelButton{
 div.openCloseContainer{
     margin-bottom: 1em;
     display: inline-block;
-}
-div.edit{
-    float: 					right;
 }
 
 div.deleteContainer{
@@ -213,6 +210,7 @@ div.kategori{
 div.formContainer{
     clear: both;
     margin-top: 1em;
+    padding-bottom: 3em;
 }
 div.nicEdit-main{
     background-color: white;
@@ -220,6 +218,11 @@ div.nicEdit-main{
     box-shadow: 0.5em;
     border: 4px !important;
 }
+div.newContainer{
+    height: 3em;
+    width: 21em;
+}
+
 li.contentListItem{
     clear: both;
     display: block;
@@ -228,7 +231,7 @@ li.contentListItem{
 table {
     margin: 				0em auto; 
     text-align: 			center;
-    width: 				50em;
+    width: 				40em;
 }
 td{
     text-align:				left;
@@ -331,7 +334,7 @@ img.hidden{
 }
 
 textarea{
-    width: 52em;
+    width: 43em;
 }
 input.login{
     width: 8em;
