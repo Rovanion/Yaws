@@ -41,6 +41,9 @@ function createContent($secondClass){
       $id = $post["JStitle"];
       
       echo '<li class="contentListItem" id="'. $id. 'ContentListItem">';
+      if($post["type"] != 1)
+	echo '<div id="'. $id. 'NicEditPanel"></div>';
+
       if($post["type"] == 0){
 	echo'<h2 class="X" id="'. $id. '">'. $post["title"]. '</h2>';
 	if($loggedIn)
@@ -84,22 +87,24 @@ function makeAdminInterface($post, $type){
   if($type == 0 || $type == 1 || $type == 2 || $type == 4){ //If it's a text field or open/closeall
     echo '<div class="deleteEditContainer" id="'. $id. 'DeleteEditContainer">';
     if($type != 1) 
-      echo '<div class="button edit" id="'. $id. 'EditButton"><h3>Edit</h3></div>
-            <div id="'. $id. 'NicEditPanel"></div>';
-    echo '<div class="button delete" id="'. $id. 'DeleteButton"><h3>Delete</h3></div></div>
+      echo '  <div class="button edit" id="'. $id. 'EditButton"><h3>Edit</h3></div>';
+    echo '    <div class="button delete" id="'. $id. 'DeleteButton"><h3>Delete</h3></div>
+          </div>
           <div class="yesNoContainer" id="'. $id. 'YesNoContainer"><h5>Är du säker?</h5>
               <div class="button yes" id="'. $id. 'YesButton"><h3>Ja</h3></div>
-              <div class="button no" id="' . $id. 'NoButton"><h3>Nej</h3></div></div>';
+              <div class="button no" id="' . $id. 'NoButton"><h3>Nej</h3></div>
+          </div>';
     if($type != 1){
-      echo '<form id="'. $id. 'Form">
+      echo '<div class="submitCancelContainer" id="'. $id. 'SubmitCancelContainer">
+                <div class="button submit" id="'. $id. 'SubmitButton"><h3>Spara</h3></div>
+                <div class="button cancelButton"><h3>Avbryt</h3></div>
+            </div>
+            <form id="'. $id. 'Form">
                 <input type="hidden" name="index" value="'. $post["index"]. '" />
                 <input type="hidden" name="table" value="'. $table. '" />
                 <input type="hidden" name="submit" value="Spara">
                 <input type="hidden" name="type" value="'. $type. '">
-    	    </form>
-            <div class="submitCancelContainer" id="'. $id. 'SubmitCancelContainer">
-                <div class="button submit" id="'. $id. 'SubmitButton"><h3>Spara</h3></div>
-                <div class="button cancelButton"><h3>Avbryt</h3></div></div>';
+    	    </form>';
     }
   }
   else if($type == 3) echo 'FIX ME'; //FIXME
