@@ -1,28 +1,29 @@
-
 <?php
 require_once '../lib/settings.php';
 require_once '../lib/libJoy.php';
 require_once '../lib/libAuth.php';
 
+/* Unless any arguments are sent with POST to this file it creates
+   the whole content part of a page.*/
 
-/*This file creates the content of each page. 
-  Concider merging it with ../lib/libJoy.php and ../pages/index.php*/
+if(!isset($_POST['onePart'])){
+  if(isset($_GET["page"]))    //If there is a page variable, use it
+    $table = mysql_real_escape_string($_GET["page"]);
+  else
+    $table = DefaultPage;        //Otherwise go to the main page
+  $parentToMatch = 'Page';
 
-if(isset($_GET["page"]))    //If there is a page variable, use it
-  $table = mysql_real_escape_string($_GET["page"]);
-else
-  $table = DefaultPage;        //Otherwise go to the main page
-$parentToMatch = 'Page';
+  echo '<ul>';
+  createContent('');
+  echo '</ul>';
 
-echo '<ul>';
-createContent('');
-echo '</ul>';
-
-if($loggedIn){
-  makeAddButton('Page', $table);
+  if($loggedIn){
+    makeAddButton('Page', $table);
+  }
 }
+else{
 
-
+}
 
 //Function called to print out the content from an MySQL table
 //$table with the parent $parentToMatch.
@@ -69,7 +70,9 @@ function createContent($secondClass){
 	  makeAdminInterface($post, 4);
 	echo '<div class="hidden kategori '. $secondClass. '"  id="'. $id. 'Div">';
 	$parentToMatch = $post["JStitle"];
+
 	createContent('child');    //Calls itself to see if there are any children.
+
 	if($loggedIn)
 	  makeAddButton($id);
 	echo '</div>';
@@ -87,8 +90,8 @@ function makeAdminInterface($post, $type){
   if($type == 0 || $type == 1 || $type == 2 || $type == 4){ //If it's a text field or open/closeall
     echo '<div class="deleteEditContainer" id="'. $id. 'DeleteEditContainer">';
     if($type != 1) 
-      echo '  <div class="button edit" id="'. $id. 'EditButton"><h3>Edit</h3></div>';
-    echo '    <div class="button delete" id="'. $id. 'DeleteButton"><h3>Delete</h3></div>
+      echo '  <div class="button edit" id="'. $id. 'EditButton"><h3>Redigera</h3></div>';
+    echo '    <div class="button delete" id="'. $id. 'DeleteButton"><h3>Ta bort</h3></div>
           </div>
           <div class="yesNoContainer" id="'. $id. 'YesNoContainer"><h5>Är du säker?</h5>
               <div class="button yes" id="'. $id. 'YesButton"><h3>Ja</h3></div>
@@ -96,14 +99,14 @@ function makeAdminInterface($post, $type){
           </div>';
     if($type != 1){
       echo '<div class="submitCancelContainer" id="'. $id. 'SubmitCancelContainer">
-                <div class="button submit" id="'. $id. 'SubmitButton"><h3>Spara</h3></div>
-                <div class="button cancelButton"><h3>Avbryt</h3></div>
+                <div class="button submit"><h3>Spara</h3></div>
+                <div class="button cancel"><h3>Avbryt</h3></div>
             </div>
             <form id="'. $id. 'Form">
                 <input type="hidden" name="index" value="'. $post["index"]. '" />
                 <input type="hidden" name="table" value="'. $table. '" />
-                <input type="hidden" name="submit" value="Spara">
-                <input type="hidden" name="type" value="'. $type. '">
+                <input type="hidden" name="submit" value="Spara" />
+                <input type="hidden" name="type" value="'. $type. '" />
     	    </form>';
     }
   }
@@ -113,7 +116,7 @@ function makeAdminInterface($post, $type){
 
 function makeAddButton($id){
   global $table;
-  echo '<div class="newContainer">
+  echo '<div class="newContainer" id="'. $id. 'NewContainer">
           <select name="type" class="type" id="'. $id. 'Type">
             <option value="0">Titel med gömd paragraf</option>
             <option value="1">Öppna och Stäng alla knappar</option>
@@ -132,7 +135,7 @@ function makeAddButton($id){
                     <label for="content"><h6>Brödtext</h6></label><br /> 
 		    <textarea name="content" id="'. $id. 'TextArea"></textarea>
                 </div>
-		<input type="hidden" name="submit" value="Publicera">
+		<input type="hidden" name="submit" value="Publicera" />
                 <input type="hidden" name="table" class="table" value="'. $table. '" />
                 <input type="hidden" name="parent" value="'. $id .'" />
 	    </form>

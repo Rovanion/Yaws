@@ -207,6 +207,7 @@ div.hidden{
     margin: 				1em 0em 1em 0em;
     overflow:                           hidden;
     display: block;
+    clear: both;
 }
 div.kategori{
     clear: both;
@@ -263,21 +264,12 @@ h2{
     clear: left;
     display: inline-block;
 }
-h2.X:hover{
-    color:					#7FC6BC;
-    text-shadow: 0 0 1.5em rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-}
-
 h3{
     clear: left;
     font-size:				1.2em;
     font-family:			Tahoma, Sans-Serif;
     color:					#4BB5C1;
     display: inline-block;
-}
-h3.X:hover{
-    color:					#7FC6BC;
 }
 h4{
     font-size: 2em;
@@ -294,13 +286,16 @@ h6{
     text-shadow: 1px 1px rgba(250, 250, 250, 0.4);
     display: inline-block;
 }
-h6.link:hover{
-    cursor: pointer;
-    color: #7FC6BC;
-}
 h1.warning,h2.warning,h3.warning,h4.warning,h5.warning,h6.warning{
     color: red;
 }
+
+.X:hover,.link:hover,a:hover{
+    cursor: pointer;
+    color:					#7FC6BC;
+    text-shadow: 0 0 1em rgba(255, 255, 255, 0.3);
+}
+
 a{
     display:				block;
     color:					#7FC6BC;
@@ -308,10 +303,6 @@ a{
     height: inherit;
     width: inherit;
 }
-a:hover{
-    color:					#4BB5C1;
-}
-
 p{
     font-family: 			Verdana, Arial, sans-serif;
     font-size: 				1em;
@@ -341,11 +332,11 @@ img.hidden{
 textarea{
     width: 43em;
 }
+input{
+    width: 99%;
+}
 input.login{
     width: 8em;
-}
-input{
-    width: 20em;
 }
 select{
     margin-top: 0.3em;

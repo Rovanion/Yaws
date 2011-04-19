@@ -3,7 +3,6 @@ require_once "../lib/libAuth.php";
 require_once "../lib/libJoy.php";
 
 if($loggedIn){
-  print_r($_POST);
   if(isset($_POST["table"]))
       $table = mysql_real_escape_string($_POST["table"]); 
   else 
@@ -13,7 +12,6 @@ if($loggedIn){
   if($_POST["submit"] == "Publicera"){
     $numberOfPosts = getNextIndex($table);
     $parent = mysql_real_escape_string($_POST["parent"]);
-    
     
     if($_POST["type"] == 0){
       $title = mysql_real_escape_string($_POST["title"]);
@@ -87,7 +85,8 @@ if($loggedIn){
 
       //To make sure that no empty fields are added to the table
       if($title === '' || $content === '' || $JStitle === '')
-	die('Du måste placera minst ett alphanumerisk tecken i både titel och innehållsfältet');
+	die('Du måste placera minst ett alphanumerisk tecken i både titel och innehållsfältet. '.
+	    'Ovan är vad som sändes när du tryckte spara.'. print_r($_POST));
 
       $sql = "UPDATE `joypeak`.`{$table}` SET 
             `title` = '{$title}', `JStitle` = '{$JStitle}', `content` = '{$content}' 
