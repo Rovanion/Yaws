@@ -24,13 +24,13 @@ if($loggedIn){
 	die('Du måste placera minst ett alphanumerisk tecken i både titel och innehållsfältet');
       }
       
-      $sql = "INSERT INTO `joypeak`.`{$table}` 
+      $sql = "INSERT INTO `{$table}` 
            (`index` ,`type` ,`title` ,`JStitle` ,`content` ,`parent`)
            VALUES ('{$numberOfPosts}', '{$type}', '{$title}', 
            '{$JStitle}', '{$content}', '{$parent}');";
     }
     else if($_POST["type"] == 1){
-       $sql = "INSERT INTO `joypeak`.`{$table}` 
+       $sql = "INSERT INTO `{$table}` 
            (`index` ,`type` ,`parent` ,`JStitle`)
            VALUES ('{$numberOfPosts}', '1', '{$parent}', '{$numberOfPosts}');";
     }
@@ -44,7 +44,7 @@ if($loggedIn){
 	die('Du måste placera minst ett alphanumerisk tecken i fältet');
       }
       
-      $sql = "INSERT INTO `joypeak`.`{$table}` 
+      $sql = "INSERT INTO `{$table}` 
            (`index` ,`type` ,`JStitle` ,`content` ,`parent`)
            VALUES ('{$numberOfPosts}', '{$type}', 
            '{$JStitle}', '{$content}', '{$parent}');";
@@ -62,7 +62,7 @@ if($loggedIn){
 	die('Du måste placera minst ett alphanumerisk tecken i titeln');
       }
 
-      $sql = "INSERT INTO `joypeak`.`{$table}` 
+      $sql = "INSERT INTO `{$table}` 
            (`index` ,`type` ,`title` ,`JStitle` ,`parent`)
            VALUES ('{$numberOfPosts}', '{$type}', '{$title}', 
            '{$JStitle}', '{$parent}');";
@@ -88,7 +88,7 @@ if($loggedIn){
 	die('Du måste placera minst ett alphanumerisk tecken i både titel och innehållsfältet. '.
 	    'Ovan är vad som sändes när du tryckte spara.'. print_r($_POST));
 
-      $sql = "UPDATE `joypeak`.`{$table}` SET 
+      $sql = "UPDATE `{$table}` SET 
             `title` = '{$title}', `JStitle` = '{$JStitle}', `content` = '{$content}' 
             WHERE `{$table}`.`index` = {$index};";
     }
@@ -102,7 +102,7 @@ if($loggedIn){
       if($content == '' || $JStitle == '')
         die('Du måste placera minst ett alphanumerisk tecken i fältet');
 
-      $sql = "UPDATE `joypeak`.`{$table}` SET
+      $sql = "UPDATE `{$table}` SET
             `JStitle` = '{$JStitle}', `content` = '{$content}'
             WHERE `{$table}`.`index` = {$index};";
     }
@@ -114,7 +114,7 @@ if($loggedIn){
       //To make sure that no empty fields are added to the table
       if($title === '' || $JStitle === '')
 	die('Du måste placera minst ett alphanumerisk tecken i titeln');
-      $sql = "UPDATE `joypeak`.`{$table}` SET 
+      $sql = "UPDATE `{$table}` SET 
             `title` = '{$title}', `JStitle` = '{$JStitle}' 
             WHERE `{$table}`.`index` = {$index};";
     }
