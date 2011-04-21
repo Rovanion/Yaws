@@ -21,7 +21,8 @@ if($loggedIn){
       
       //To make sure that no empty fields are added to the table
       if($title == '' || $content == '' || $JStitle == ''){
-	die('Du måste placera minst ett alphanumerisk tecken i både titel och innehållsfältet');
+	die('Du måste placera minst ett alphanumerisk tecken 
+             i både titel och innehållsfältet.');
       }
       
       $sql = "INSERT INTO `{$table}` 
@@ -67,8 +68,12 @@ if($loggedIn){
            VALUES ('{$numberOfPosts}', '{$type}', '{$title}', 
            '{$JStitle}', '{$parent}');";
     }
+    /* This is the only function that doesn't return 1 when it succeeds but
+       the index of the post that was sucessfully added to the database.
+       This so that the callback function on the client side can load the 
+       HTML of the newly created post. */
     $success = mysql_query($sql);
-    if($success) echo '1';
+    if($success) echo $numberOfPosts;
     else reportError($sql);
   }
 
@@ -85,7 +90,8 @@ if($loggedIn){
 
       //To make sure that no empty fields are added to the table
       if($title === '' || $content === '' || $JStitle === '')
-	die('Du måste placera minst ett alphanumerisk tecken i både titel och innehållsfältet. '.
+	die('Du måste placera minst ett alphanumerisk tecken 
+             i både titel och innehållsfältet. '.
 	    'Ovan är vad som sändes när du tryckte spara.'. print_r($_POST));
 
       $sql = "UPDATE `{$table}` SET 
@@ -181,6 +187,7 @@ if($loggedIn){
    validateNewUser();
   }
 }
+// The fallwing two cases are only used to make the first account
 else if($_POST["submit"] == "Register"){
   $sql = "SELECT * FROM `users`";
   $result = mysql_query($sql);
