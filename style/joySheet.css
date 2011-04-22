@@ -290,9 +290,12 @@ h1.warning,h2.warning,h3.warning,h4.warning,h5.warning,h6.warning{
     color: red;
 }
 
+.X{
+    min-width: 9em;
+}
 .X:hover,.link:hover,a:hover{
     cursor: pointer;
-    color:					#7FC6BC;
+    color: #7FC6BC;
     text-shadow: 0 0 1em rgba(255, 255, 255, 0.3);
 }
 

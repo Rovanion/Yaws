@@ -14,7 +14,7 @@ function makeHead($title){    //This is the function that makes the head of the 
 	    <script src="../lib/jquery.easing.js" type="text/javascript" language="javascript"></script>
             <script src="../lib/joyScript.js" type="text/javascript" language="javascript"></script>
             <!-- Remove jquery.lint.js on production setups -->
-            <script src="../lib/jquery.lint.js" type="text/javascript" language="javascript"></script>');
+            <!-- <script src="../lib/jquery.lint.js" type="text/javascript" language="javascript"></script> -->');
 
   if($loggedIn){
     echo('<script src="../lib/nicEdit.js" type="text/javascript" language="javascript"></script> 
