@@ -24,7 +24,7 @@ echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 <tr>
 <td id="content">
 <?php 
-makeMenu();    //Creates the main menu 
+makeMenu();    //Located in ../lib/libJoy.php
 ?>
 <div id="main">
 <div id="content2">
@@ -59,9 +59,9 @@ include '../lib/content.php'; //Creates theb main content of the page
 </div>
 <div class="spacer"></div>
 <div class="foot"><h6>
-  Joypeak <br />
-  Den 5e Juni <br />
-  Klockan 09:00
+  Annan <br />
+  intressant <br />
+  information
 </h6>
 </div>
 <div class="spacer"></div>

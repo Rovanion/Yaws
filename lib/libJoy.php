@@ -61,7 +61,7 @@ function makeMenu(){    //Function that creates the main menu
 //ID's once in place in the HTML can be used by JavaScript to manipulate the page.
 function cleanForJavaScript($string){
   //Damn regular expressions, depricating long long functions
-  $string = preg_replace("/[^-_a-z0-9]+/i",'', $string);
+  $string = preg_replace("/[^-_a-ö0-9]+/i",'', $string);
 
   return $string;
 }

@@ -128,9 +128,9 @@ function makeAddButton($id){
   echo '<div class="newContainer" id="'. $id. 'NewContainer">
           <select name="type" class="type" id="'. $id. 'Type">
             <option value="0">Titel med gömd paragraf</option>
-            <option value="1">Öppna och Stäng alla knappar</option>
+            <option value="1">Öppna/stäng alla knappar</option>
             <option value="2">Paragraf</option>
-            <option value="3">Bild med undertext</option>
+            <option value="3">Bildspel (Inte implementerat)</option>
             <option value="4">Huvudkategori</option>
           </select>
           <div class="button newButton" id="'. $id. 'NewButton"><h3>Lägg till
