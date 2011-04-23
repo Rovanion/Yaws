@@ -43,7 +43,7 @@ function makeMenu(){    //Function that creates the main menu
   if($loggedIn){
     echo '<div class="menuItem"><a href="../pages/theAddAPagePage.php"><h4>+</h4></a> + </div>';
   }
-  echo  '<div class="menuItem right"><a href="../pages/nonExisting.php"><h4>Frivillig</h4></a></div>
+  echo  '<div class="menuItem right"><a href="../pages/nonExisting.php"><h4>Död länk</h4></a></div>
  	 </div>';
 
   if(mysql_num_rows($posts) == 0){
@@ -60,46 +60,9 @@ function makeMenu(){    //Function that creates the main menu
 //are put into a database to later be used for unique ID's of HTML elements. This is done so that the
 //ID's once in place in the HTML can be used by JavaScript to manipulate the page.
 function cleanForJavaScript($string){
-  $string = str_replace(' ', '', $string);
-  $string = str_replace('!', '', $string);
-  $string = str_replace('/', '', $string);
-  $string = str_replace(':', '', $string);
-  $string = str_replace(';', '', $string);
-  $string = str_replace('&', '', $string);
-  $string = str_replace('(', '', $string);
-  $string = str_replace(')', '', $string);
-  $string = str_replace('.', '', $string);
-  $string = str_replace(',', '', $string);
-  $string = str_replace('-', '', $string);
-  $string = str_replace('+', '', $string);
-  $string = str_replace('#', '', $string);
-  $string = str_replace('¤', '', $string);
-  $string = str_replace('%', '', $string);
-  $string = str_replace('=', '', $string);
-  $string = str_replace('?', '', $string);
-  $string = str_replace('´', '', $string);
-  $string = str_replace('`', '', $string);
-  $string = str_replace('\'', '', $string);
-  $string = str_replace('*', '', $string);
-  $string = str_replace('<', '', $string);
-  $string = str_replace('>', '', $string);
-  $string = str_replace('@', '', $string);
-  $string = str_replace('£', '', $string);
-  $string = str_replace('$', '', $string);
-  $string = str_replace('€', '', $string);
-  $string = str_replace('¥', '', $string);
-  $string = str_replace('{', '', $string);
-  $string = str_replace('[', '', $string);
-  $string = str_replace(']', '', $string);
-  $string = str_replace('}', '', $string);
-  $string = str_replace('\\', '', $string);
-  $string = str_replace('^', '', $string);
-  $string = str_replace('±', '', $string);
-  $string = str_replace('§', '', $string);
-  $string = str_replace('½', '', $string);
-  $string = str_replace('¶', '', $string);
-  $string = str_replace('~', '', $string);
-  
+  //Damn regular expressions, depricating long long functions
+  $string = preg_replace("/[^-_a-z0-9]+/i",'', $string);
+
   return $string;
 }
 
