@@ -33,17 +33,17 @@ function makeMenu(){    //Function that creates the main menu
   while($post = mysql_fetch_assoc($posts)){
     if($post["index"] == 1){    //If it's the first menu item, give it the class left
       echo '<div class="menuItem left"><a href="index.php?page='. $post["JStitle"]. 
-	'"><h4>'. $post["title"]. '</h4></a></div>';
+	'"><h2 class="menuItem">'. $post["title"]. '</h2></a></div>';
     }
     else{
       echo '<div class="menuItem"><a href="index.php?page='. $post["JStitle"]. 
-	  '"><h4>'. $post["title"]. '</h4></a></div>';
+	  '"><h3>'. $post["title"]. '</h3></a></div>';
     }
   }
   if($loggedIn){
-    echo '<div class="menuItem"><a href="../pages/theAddAPagePage.php"><h4>+</h4></a> + </div>';
+    echo '<div class="menuItem"><a href="../pages/theAddAPagePage.php"><h2>+</h2></a> + </div>';
   }
-  echo  '<div class="menuItem right"><a href="../pages/nonExisting.php"><h4>Död länk</h4></a></div>
+  echo  '<div class="menuItem right"><a href="../pages/nonExisting.php"><h2 class="menuItem">Död länk</h2></a></div>
  	 </div>';
 
   if(mysql_num_rows($posts) == 0){
