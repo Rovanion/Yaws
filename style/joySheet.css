@@ -221,8 +221,6 @@ div.formContainer{
 div.nicEdit-main{
     background-color: rgba(255, 255, 255, 0.7);
     margin: 0 0 0 0 !important;
-    border: 4px !important;
-    width: 572px !important;
 }
 div.newContainer{
     height: 3em;
@@ -293,7 +291,7 @@ h1.warning,h2.warning,h3.warning,h4.warning,h5.warning,h6.warning{
 }
 
 .X{
-    min-width: 9em;
+    min-width: 7em;
 }
 .X:hover,.link:hover,a:hover{
     cursor: pointer;
@@ -333,9 +331,8 @@ img.hidden{
     position: absolute;
     z-index: -1;
 }
-
 textarea{
-    width: 43em;
+    width: 99%;
 }
 input{
     width: 99%;

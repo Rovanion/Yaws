@@ -41,7 +41,7 @@ function makeMenu(){    //Function that creates the main menu
     }
   }
   if($loggedIn){
-    echo '<div class="menuItem"><a href="../pages/theAddAPagePage.php"><h2>+</h2></a> + </div>';
+    echo '<div class="menuItem"><a href="../pages/theAddAPagePage.php"><h2 class="menuItem">+</h2></a> + </div>';
   }
   echo  '<div class="menuItem right"><a href="../pages/nonExisting.php"><h2 class="menuItem">Död länk</h2></a></div>
  	 </div>';
