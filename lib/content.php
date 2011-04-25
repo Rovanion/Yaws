@@ -55,7 +55,7 @@ function createContent($secondClass, $what){
       if($post["type"] == 0){
 	if($loggedIn)
 	  makeAdminInterface($post, 0);
-	echo'<h2 class="X" id="'. $id. '">'. $post["title"]. '</h2>';
+	echo'<h3 class="X" id="'. $id. '">'. $post["title"]. '</h3>';
 	echo '<div class="hidden '. $secondClass. '" id="'. $id. 'Div">'.
 	  '<p id="'. $id. 'Text">'. $post["content"]. '</p></div>';
       }
@@ -63,23 +63,23 @@ function createContent($secondClass, $what){
 	if($loggedIn)
 	  makeAdminInterface($post, 1);
 	echo '<div class="openCloseContainer">
-          <div class="button open" id="'. $id. 'OpenButton"><h3>Öppna alla</h3></div>
-          <div class="button close" id="'. $id. 'CloseButton"><h3>Stäng alla</h3></div></div>';
+          <div class="button open" id="'. $id. 'OpenButton"><h4>Öppna alla</h4></div>
+          <div class="button close" id="'. $id. 'CloseButton"><h4>Stäng alla</h4></div></div>';
       }
       else if($post["type"] == 2){
 	if($loggedIn)
 	  makeAdminInterface($post, 2);
-	echo '<p id="'. $id .'Text">'. $post["content"]. '</p>';
+	echo '<div id="'. $id .'Text">'. $post["content"]. '</div>';
       }
       else if($post["type"] == 4){
 	if($loggedIn)
 	  makeAdminInterface($post, 4);
-	echo '<h2 class="X kategoriHeader" id="'. $id. '">'. $post["title"]. '</h2>';
+	echo '<h3 class="X kategoriHeader" id="'. $id. '">'. $post["title"]. '</h3>';
 	echo '<div class="hidden kategori '. $secondClass. '"  id="'. $id. 'Div">';
 	$parentToMatch = $post["JStitle"];
 
 	echo '<ul id="'. $id. 'UnsortedList">';
-	createContent('child');    //Calls itself to see if there are any children.
+	createContent('child', 'wholePage');    //Calls itself to see if there are any children.
 	echo '</ul>';
 
 	if($loggedIn)
@@ -99,17 +99,17 @@ function makeAdminInterface($post, $type){
   if($type == 0 || $type == 1 || $type == 2 || $type == 4){ //If it's a text field or open/closeall
     echo '<div class="deleteEditContainer" id="'. $id. 'DeleteEditContainer">';
     if($type != 1) 
-      echo '  <div class="button edit" id="'. $id. 'EditButton"><h3>Redigera</h3></div>';
-    echo '    <div class="button delete" id="'. $id. 'DeleteButton"><h3>Ta bort</h3></div>
+      echo '  <div class="button edit" id="'. $id. 'EditButton"><h4>Redigera</h4></div>';
+    echo '    <div class="button delete" id="'. $id. 'DeleteButton"><h4>Ta bort</h4></div>
           </div>
           <div class="yesNoContainer" id="'. $id. 'YesNoContainer"><h5>Är du säker?</h5>
-              <div class="button yes" id="'. $id. 'YesButton"><h3>Ja</h3></div>
-              <div class="button no" id="' . $id. 'NoButton"><h3>Nej</h3></div>
+              <div class="button yes" id="'. $id. 'YesButton"><h4>Ja</h4></div>
+              <div class="button no" id="' . $id. 'NoButton"><h4>Nej</h4></div>
           </div>';
     if($type != 1){
       echo '<div class="submitCancelContainer" id="'. $id. 'SubmitCancelContainer">
-                <div class="button submit"><h3>Spara</h3></div>
-                <div class="button cancel"><h3>Avbryt</h3></div>
+                <div class="button submit"><h4>Spara</h4></div>
+                <div class="button cancel"><h4>Avbryt</h4></div>
             </div>
             <form id="'. $id. 'Form">
                 <input type="hidden" name="index" value="'. $post["index"]. '" />
@@ -133,8 +133,8 @@ function makeAddButton($id){
             <option value="3">Bildspel (Inte implementerat)</option>
             <option value="4">Huvudkategori</option>
           </select>
-          <div class="button newButton" id="'. $id. 'NewButton"><h3>Lägg till
-        </h3></div></div>
+          <div class="button newButton" id="'. $id. 'NewButton"><h4>Lägg till
+        </h4></div></div>
         <div class="formContainer new" id="'. $id. 'FormContainer">
             <form id="'. $id. 'Form">
                 <div class="titleContainer">
@@ -148,8 +148,8 @@ function makeAddButton($id){
                 <input type="hidden" name="table" class="table" value="'. $table. '" />
                 <input type="hidden" name="parent" value="'. $id .'" />
 	    </form>
-        <div class="button submit" id="'. $id. 'SubmitButton"><h3>Skapa</h3></div>
-        <div class="button cancel"><h3>Avbryt</h3></div>
+        <div class="button submit" id="'. $id. 'SubmitButton"><h4>Skapa</h4></div>
+        <div class="button cancel"><h4>Avbryt</h4></div>
         </div>';
 }
 
