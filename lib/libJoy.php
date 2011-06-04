@@ -6,14 +6,16 @@ function makeHead($title){    //This is the function that makes the head of the 
 	<html>
             <head>
 	    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-	    <link href="../style/joySheet.css" rel="stylesheet" type="text/css">
+	    <link href="../style/liveSheet.css" rel="stylesheet" type="text/css">
             <link rel="icon" href="../img/favicon.png">
             <title>'. $title. '</title>
 	    	
 	    <script src="../lib/jquery.js" type="text/javascript" language="javascript"></script>
 	    <script src="../lib/jquery.easing.js" type="text/javascript" language="javascript"></script>
+            <script src="../lib/jquery.hotkeys.js" type="text/javascript" language="javascript"></script>
+
             <script src="../lib/joyScript.js" type="text/javascript" language="javascript"></script>
-            <!-- Remove jquery.lint.js on production setups -->
+            <!-- Remove or quote out jquery.lint.js on production setups -->
             <!-- <script src="../lib/jquery.lint.js" type="text/javascript" language="javascript"></script> -->');
 
   if($loggedIn){

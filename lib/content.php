@@ -55,9 +55,11 @@ function createContent($secondClass, $what){
       if($post["type"] == 0){
 	if($loggedIn)
 	  makeAdminInterface($post, 0);
-	echo'<h3 class="X" id="'. $id. '">'. $post["title"]. '</h3>';
-	echo '<div class="hidden '. $secondClass. '" id="'. $id. 'Div">'.
-	  '<p id="'. $id. 'Text">'. $post["content"]. '</p></div>';
+	echo '<div class="XDiv"><h2 class="X" id="'. $id. '">'. $post["title"]. '</h3></div>';
+	echo '<div class="hidden '. $secondClass. '" id="'. $id. 'Div">
+           <img class="start" src="../img/hiddenStart.png">
+	   <p id="'. $id. 'Text">'. $post["content"]. '</p>
+           <img class="end" src="../img/hiddenEnd.png"></div>';
       }
       else if($post["type"] == 1){
 	if($loggedIn)
@@ -74,8 +76,9 @@ function createContent($secondClass, $what){
       else if($post["type"] == 4){
 	if($loggedIn)
 	  makeAdminInterface($post, 4);
-	echo '<h3 class="X kategoriHeader" id="'. $id. '">'. $post["title"]. '</h3>';
-	echo '<div class="hidden kategori '. $secondClass. '"  id="'. $id. 'Div">';
+	echo '<div class="XDiv"><h2 class="X kategoriHeader" id="'. $id. '">'. $post["title"]. '</h3></div>';
+	echo '<div class="hidden kategori '. $secondClass. '"  id="'. $id. 'Div">
+              <img class="start" src="../img/hiddenStart.png">';
 	$parentToMatch = $post["JStitle"];
 
 	echo '<ul id="'. $id. 'UnsortedList">';
@@ -84,7 +87,7 @@ function createContent($secondClass, $what){
 
 	if($loggedIn)
 	  makeAddButton($id);
-	echo '</div>';
+	echo '<img class="end" src="../img/hiddenEnd.png"></div>';
       }
       echo '</li>';
     } 
