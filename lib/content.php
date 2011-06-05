@@ -52,6 +52,7 @@ function createContent($secondClass, $what){
       if($post["type"] != 1)
 	echo '<div id="'. $id. 'NicEditPanel"></div>';
 
+      //Type 0 is a title with hidden content beneath
       if($post["type"] == 0){
 	if($loggedIn)
 	  makeAdminInterface($post, 0);
@@ -61,6 +62,7 @@ function createContent($secondClass, $what){
 	   <p id="'. $id. 'Text">'. $post["content"]. '</p>
            <img class="end" src="../img/hiddenEnd.png"></div>';
       }
+      //Type 1 is a set of open and close buttons
       else if($post["type"] == 1){
 	if($loggedIn)
 	  makeAdminInterface($post, 1);
@@ -68,11 +70,14 @@ function createContent($secondClass, $what){
           <div class="button open" id="'. $id. 'OpenButton"><h4>Öppna alla</h4></div>
           <div class="button close" id="'. $id. 'CloseButton"><h4>Stäng alla</h4></div></div>';
       }
+      //Type 2 is plain content
       else if($post["type"] == 2){
 	if($loggedIn)
 	  makeAdminInterface($post, 2);
 	echo '<div id="'. $id .'Text">'. $post["content"]. '</div>';
       }
+      /* Type 4 is a category header. The combination of a type 4 fallowed by a
+         type 2 has the equal effect of a type 1. But type 1 is more effective.*/
       else if($post["type"] == 4){
 	if($loggedIn)
 	  makeAdminInterface($post, 4);
