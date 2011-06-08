@@ -204,7 +204,6 @@ div.foot{
     width: auto;
 }
 div.hidden{
-    margin: 				1em 0em 1em 0em;
     overflow:                           hidden;
     display: block;
     clear: both;
@@ -226,10 +225,16 @@ div.newContainer{
     height: 3em;
     width: 21em;
 }
+div.warning{
+    border-width: 0.1em;
+    border-color: orange;
+    background-color: yellow;
+}
 
 li.contentListItem{
     clear: both;
     display: block;
+    margin: 2em 0 2em 0;
 }
 
 table {
@@ -295,7 +300,10 @@ h1.warning,h2.warning,h3.warning,h4.warning,h5.warning,h6.warning{
 .X:hover,.link:hover,a:hover{
     cursor: pointer;
     color: #7FC6BC;
-    text-shadow: 0 0 1em rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 1em rgba(255, 255, 255, 0.5);
+}
+.link{
+        color: 					#B5E655;
 }
 
 a{
