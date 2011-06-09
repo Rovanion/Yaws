@@ -20,9 +20,7 @@ echo'>';
 </tr>
 <tr>
 <td id="content">
-<?php
-makeMenu();    //Creates the main menu
-?>
+
 <div id="main">
 <div id="content2">
 <?php

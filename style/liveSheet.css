@@ -26,6 +26,7 @@ h1,h2,h3,h4,h5,h6 {
     font-weight: normal;
     font-size: 100%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-shadow: 			1px 1px #AAA;
 }
 q:before, q:after {
     content:'';
@@ -36,9 +37,12 @@ abbr,acronym {
 body{
     background-color: 		#000;
 }
+body.loggedIn{
+	background-image: url("../img/boxxy.png");
+}
 
 div#main{
-    width: 					auto;
+    width: 					960px;
     height: 				auto;
 }
 content2{
@@ -64,7 +68,7 @@ div.button:hover{
     cursor: pointer;
 }
 div.button:hover h3{
-    color: 					#7FC6BC;
+    color: 					#BBB;
 }
 div.button.small{
     padding: 5px 10px;
@@ -79,7 +83,7 @@ div.openCloseContainer{
 }
 div.deleteEditContainer{
     float: 					right;
-    display: inline;
+    display: block;
 }
 div.submitCancelContainer{
     float: right;
@@ -113,13 +117,35 @@ div.nicEdit-main{
 }
 div.newContainer{
     height: 3em;
-    width: 21em;
+	background-image: url(../img/background.png);
+}
+div.newButton{
+	float: left;
+}
+div#PageFormContainer{
+	background-image: url(../img/background.png);
+	margin-top: 0;
+}
+
+div.logo{
+    background-image: url(../img/logo.png);
+    height: 360px;
+    width: 960px;
+    margin-top: 1em;
+}
+div.Page{
+	background-image: url("../img/background.png");
+	padding: 0 3em;
+}
+div#bottom{
+	background-image: url("../img/pageEnd.png");	
+	height: 6px;
+	margin-bottom: 3em;
 }
 
 li.contentListItem{
     clear: both;
     display: block;
-    width: 960px;
 }
 
 table {
@@ -131,16 +157,12 @@ td{
     text-align:				left;
 }
 
-td#content{
-    //background-image: url("../img/background.png");
-}
-
 h1{
     font-size: 				4em;
     color: 					#444;
-    text-shadow: 			1px 1px #7FC6BC, 2px 2px #7FC6BC, 3px 3px #7FC6BC, 4px 4px #7FC6BC, 5px 5px #7FC6BC, 6px 6px #7FC6BC, -1px -1px rgba(255, 255, 255, 0.8);
     text-align:				center;
     font-weight:			bold;
+	text-shadow: 			1px 1px #999, 2px 2px #CCC;
 }
 h2{
     font-size: 3em;
@@ -185,19 +207,26 @@ h1.warning,h2.warning,h3.warning,h4.warning,h5.warning,h6.warning{
     -o-transform: rotate(-5deg);
     transform: rotate(-5deg);
 }
+body.loggedIn .X{
+	 -webkit-transform: rotate(0deg);	
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
 .X:hover,.link:hover,a:hover{
     cursor: pointer;
     color: grey;
     text-shadow: 0 0 1em rgba(255, 255, 255, 0.3);
 }
-div.XDiv{
+div.divX{
     background-image: url("../img/background.png");
-    padding: 1.5em 0 2.5em 0;
+    padding: 1.5em 2em 2.5em 2em;
 }
 
 a{
     display:				block;
-    color:					#7FC6BC;
+    color:					#BBB;
     text-decoration:		none;
     height: inherit;
     width: inherit;
@@ -205,10 +234,10 @@ a{
 p{
     font-family: 			Verdana, Arial, sans-serif;
     font-size: 				1em;
-    color:					33302B;
+    color:					#33302B;
     line-height:			1.5;
-    text-shadow: 			-1px 1px 7px rgba(196, 195, 162, 0.5);
-    margin: 				1em 0em 1em 0em;
+    text-shadow: 			1px 1px 1px rgba(0, 0, 0, 0.2);
+    margin: 				1em 0em 0em 0em;
 }
 p.hidden{
     overflow:				hidden;
@@ -237,15 +266,9 @@ select{
     margin-top: 0.3em;
 }
 
-div.logo{
-    background-image: url(../img/logo.png);
-    height: 360px;
-    width: 960px;
-    margin-top: 2em;
-}
 img.end{
     position: relative;
-    margin: 0 0 -6px -8em;
+    margin: 1em 0 -6px -8em;
 }
 img.start{
     position: relative;

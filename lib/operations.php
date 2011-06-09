@@ -238,7 +238,7 @@ function registerNewUser(){
     //FIXME The message and domain name should be variable.
     $message = "Var hälsad! \n \n Åt dig har det skapats ett administrativt konto på rovanion.dyndns.org \n".
       "Var god besök följande adress för att aktivera kontot: \n ".
-      "http://rovanion.dyndns.org/joypeak/pages/verification.php?email=". $email . '&token='. $token;
+      "http://rovanion.dyndns.org/pages/verification.php?email=". $email . '&token='. $token;
     if(!mail($email, 'Verification of administrational account', $message))
       echo 'Sending the verification email failed';
     else

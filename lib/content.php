@@ -56,7 +56,7 @@ function createContent($secondClass, $what){
       if($post["type"] == 0){
 	if($loggedIn)
 	  makeAdminInterface($post, 0);
-	echo '<div class="XDiv"><h2 class="X" id="'. $id. '">'. $post["title"]. '</h3></div>';
+	echo '<div class="divX"><h2 class="X" id="'. $id. '">'. $post["title"]. '</h3></div>';
 	echo '<div class="hidden '. $secondClass. '" id="'. $id. 'Div">
            <img class="start" src="../img/hiddenStart.png">
 	   <p id="'. $id. 'Text">'. $post["content"]. '</p>
@@ -74,14 +74,18 @@ function createContent($secondClass, $what){
       else if($post["type"] == 2){
 	if($loggedIn)
 	  makeAdminInterface($post, 2);
+	if($parentToMatch == 'Page')
+		echo '<div class="'. $parentToMatch. '">';
 	echo '<div id="'. $id .'Text">'. $post["content"]. '</div>';
+	if($parentToMatch == 'Page')
+		echo '</div>';
       }
       /* Type 4 is a category header. The combination of a type 4 fallowed by a
          type 2 has the equal effect of a type 1. But type 1 is more effective.*/
       else if($post["type"] == 4){
 	if($loggedIn)
 	  makeAdminInterface($post, 4);
-	echo '<div class="XDiv"><h2 class="X kategoriHeader" id="'. $id. '">'. $post["title"]. '</h3></div>';
+	echo '<div class="divX"><h2 class="X kategoriHeader" id="'. $id. '">'. $post["title"]. '</h3></div>';
 	echo '<div class="hidden kategori '. $secondClass. '"  id="'. $id. 'Div">
               <img class="start" src="../img/hiddenStart.png">';
 	$parentToMatch = $post["JStitle"];
