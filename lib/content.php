@@ -6,8 +6,8 @@ require_once '../lib/libAuth.php';
 /* Unless any arguments are sent with POST to this file it creates
    the whole content part of a page.*/
 
-if(isset($_GET["page"]))    //If there is a page variable, use it
-  $table = mysql_real_escape_string($_GET["page"]);
+if(isset($_REQUEST["page"]))    //If there is a page variable, use it
+  $table = mysql_real_escape_string($_REQUEST["page"]);
 else
   $table = DefaultPage;        //Otherwise go to the main page
 $parentToMatch = 'Page';
@@ -26,8 +26,14 @@ else{
 }
 
 
-//Function called to print out the content from an MySQL table
-//$table with the parent $parentToMatch.
+/* Function called to print out the content from an MySQL table $table 
+   with the parent $parentToMatch.
+   WARNING: This function returns no error message if the SQL-query returns
+   nothing. This makes it hard to known what causes errors in the application.
+   But this seems to be the somewhat of a must since it's sometimes called
+   with the expectation of returning nothing at all. */
+
+
 function createContent($secondClass, $what){
   global $parentToMatch;
   global $table;
@@ -55,7 +61,7 @@ function createContent($secondClass, $what){
       if($post["type"] == 0){
 	if($loggedIn)
 	  makeAdminInterface($post, 0);
-	echo'<h3 class="X" id="'. $id. '">'. $post["title"]. '</h3>';
+	echo'<h3 class="X link" id="'. $id. '">'. $post["title"]. '</h3>';
 	echo '<div class="hidden '. $secondClass. '" id="'. $id. 'Div">'.
 	  '<p id="'. $id. 'Text">'. $post["content"]. '</p></div>';
       }
@@ -74,7 +80,7 @@ function createContent($secondClass, $what){
       else if($post["type"] == 4){
 	if($loggedIn)
 	  makeAdminInterface($post, 4);
-	echo '<h3 class="X kategoriHeader" id="'. $id. '">'. $post["title"]. '</h3>';
+	echo '<h3 class="X kategoriHeader link" id="'. $id. '">'. $post["title"]. '</h3>';
 	echo '<div class="hidden kategori '. $secondClass. '"  id="'. $id. 'Div">';
 	$parentToMatch = $post["JStitle"];
 
@@ -143,6 +149,7 @@ function makeAddButton($id){
                 </div><div class="contentContainer">
                     <label for="content"><h6>Brödtext</h6></label><br /> 
 		    <textarea name="content" id="'. $id. 'TextArea"></textarea>
+                    <div id="'. $id. 'NicEditPanel"></div>
                 </div>
 		<input type="hidden" name="submit" value="Publicera" />
                 <input type="hidden" name="table" class="table" value="'. $table. '" />
