@@ -107,6 +107,7 @@ div#footer{
     box-shadow:	    inset 2px 2px 1em rgba(0, 0, 0, 0.3);
     border-radius: 	1em 1em 0 0;
 }
+
 div.button{
     display: block;
     float: right;
@@ -133,6 +134,9 @@ div.button.small{
 }
 div.cancelButton{
     margin-bottom: 1em;
+}
+div.newButton{
+    float: left;
 }
 
 div.openCloseContainer{
@@ -204,7 +208,6 @@ div.foot{
     width: auto;
 }
 div.hidden{
-    margin: 				1em 0em 1em 0em;
     overflow:                           hidden;
     display: block;
     clear: both;
@@ -224,12 +227,20 @@ div.nicEdit-main{
 }
 div.newContainer{
     height: 3em;
-    width: 21em;
+}
+div.warning{
+    padding: 1em;
+    background-color: orange;
+    clear: both;
+    border: 0.1em solid red;
+    border-radius: 0.5em;
+    margin: 1em;
 }
 
 li.contentListItem{
     clear: both;
     display: block;
+    margin: 2em 0 2em 0;
 }
 
 table {
@@ -295,7 +306,10 @@ h1.warning,h2.warning,h3.warning,h4.warning,h5.warning,h6.warning{
 .X:hover,.link:hover,a:hover{
     cursor: pointer;
     color: #7FC6BC;
-    text-shadow: 0 0 1em rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 1em rgba(255, 255, 255, 0.5);
+}
+.link{
+        color: 					#B5E655;
 }
 
 a{

@@ -40,7 +40,10 @@ function createContent($secondClass, $what){
   }
   $result = mysql_query($sql);
   
-  if($result == false || mysql_num_rows($result) == 0){ 
+  if($result == false || mysql_num_rows($result) == 0){
+    /* This echo exists so that ../lib/adminScript.js has something to atatch new list-items
+       after when a new entry is added to the page via AJAX */
+    echo '<li class="emptyItem"></li>'; 
     return;
   }
   else{
@@ -55,7 +58,7 @@ function createContent($secondClass, $what){
       if($post["type"] == 0){
 	if($loggedIn)
 	  makeAdminInterface($post, 0);
-	echo'<h3 class="X" id="'. $id. '">'. $post["title"]. '</h3>';
+	echo'<h3 class="X link" id="'. $id. '">'. $post["title"]. '</h3>';
 	echo '<div class="hidden '. $secondClass. '" id="'. $id. 'Div">'.
 	  '<p id="'. $id. 'Text">'. $post["content"]. '</p></div>';
       }
@@ -74,7 +77,7 @@ function createContent($secondClass, $what){
       else if($post["type"] == 4){
 	if($loggedIn)
 	  makeAdminInterface($post, 4);
-	echo '<h3 class="X kategoriHeader" id="'. $id. '">'. $post["title"]. '</h3>';
+	echo '<h3 class="X kategoriHeader link" id="'. $id. '">'. $post["title"]. '</h3>';
 	echo '<div class="hidden kategori '. $secondClass. '"  id="'. $id. 'Div">';
 	$parentToMatch = $post["JStitle"];
 
@@ -143,6 +146,7 @@ function makeAddButton($id){
                 </div><div class="contentContainer">
                     <label for="content"><h6>Brödtext</h6></label><br /> 
 		    <textarea name="content" id="'. $id. 'TextArea"></textarea>
+                    <div id="'. $id. 'NicEditPanel"></div>
                 </div>
 		<input type="hidden" name="submit" value="Publicera" />
                 <input type="hidden" name="table" class="table" value="'. $table. '" />

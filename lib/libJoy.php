@@ -1,6 +1,6 @@
 <?php 
 function makeHead($title){    //This is the function that makes the head of the page
-  global $loggedIn;
+  global $loggedIn;  //Defined in ../lib/libAuth.php
 
   echo('<!DOCTYPE HTML>
 	<html>

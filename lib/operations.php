@@ -90,7 +90,7 @@ if($loggedIn){
 
       //To make sure that no empty fields are added to the table
       if($title === '' || $content === '' || $JStitle === '')
-	die('Du måste placera minst ett alphanumerisk tecken 
+	die('<br /><br />Du måste placera minst ett alphanumerisk tecken 
              i både titel och innehållsfältet. '.
 	    'Ovan är vad som sändes när du tryckte spara.'. print_r($_POST));
 

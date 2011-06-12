@@ -8,7 +8,7 @@ if($loggedIn && DefaultPage == 'NotSet'){
 }
 
 makeHead('YAWS - Den där filmen som baklänges handlar om en haj 
-som spyr upp människor tills dom öppnar en strand ');
+som spyr upp människor tills en strand öppsas. ');
 
 echo '<body'; if($loggedIn) echo ' class="loggedIn"'; echo'>';
 ?>
