@@ -236,6 +236,11 @@ div.warning{
     border-radius: 0.5em;
     margin: 1em;
 }
+div.warning{
+    border-width: 0.1em;
+    border-color: orange;
+    background-color: yellow;
+}
 
 li.contentListItem{
     clear: both;
@@ -246,7 +251,7 @@ li.contentListItem{
 table {
     margin: 				0em auto; 
     text-align: 			center;
-    width: 				40em;
+    width: 				50em;
 }
 td{
     text-align:				left;
