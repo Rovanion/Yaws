@@ -108,8 +108,8 @@ div.kategori{
 }
 div.formContainer{
     clear: both;
-    margin-top: 1em;
-    padding-bottom: 3em;
+    margin: 1em 1em 0 1em;
+    padding-bottom: 2em;
 }
 div.nicEdit-main{
     background-color: rgba(255, 255, 255, 0.7);
@@ -137,10 +137,14 @@ div.Page{
 	background-image: url("../img/background.png");
 	padding: 0 3em;
 }
+div#nextToBottom{
+    background-image: url("../img/background.png");
+    padding: 1em;
+}
 div#bottom{
 	background-image: url("../img/pageEnd.png");	
-	height: 6px;
-	margin-bottom: 3em;
+	height: 286px;
+	margin-bottom: 1em;
 }
 
 li.contentListItem{
@@ -197,18 +201,23 @@ h1.warning,h2.warning,h3.warning,h4.warning,h5.warning,h6.warning{
 
 .X{
     min-width: 7em;
-    //background-image: url("../img/background.png");
     color: #444;
     display: block;
     text-align: center;
-    -webkit-transform: rotate(-5deg);	
-    -moz-transform: rotate(-5deg);
-    -ms-transform: rotate(-5deg);
-    -o-transform: rotate(-5deg);
-    transform: rotate(-5deg);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
-body.loggedIn .X{
-	 -webkit-transform: rotate(0deg);	
+.X:hover{
+    -webkit-transform: rotate(1deg);	
+    -moz-transform: rotate(1deg);
+    -ms-transform: rotate(1deg);
+    -o-transform: rotate(1deg);
+    transform: rotate(1deg);
+}
+body.loggedIn .X:hover{
+    -webkit-transform: rotate(0deg);	
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -216,8 +225,8 @@ body.loggedIn .X{
 }
 .X:hover,.link:hover,a:hover{
     cursor: pointer;
-    color: grey;
-    text-shadow: 0 0 1em rgba(255, 255, 255, 0.3);
+    color: black;
+    text-shadow: -1px -1px 0 #FFF, 0 0 4px grey;
 }
 div.divX{
     background-image: url("../img/background.png");
