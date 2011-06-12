@@ -122,6 +122,10 @@ div.newContainer{
 div.newButton{
 	float: left;
 }
+div.loginBox{
+    position: absolute;
+    margin: -12em 0 0 6em;
+}
 div#PageFormContainer{
 	background-image: url(../img/background.png);
 	margin-top: 0;
