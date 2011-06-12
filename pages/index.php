@@ -28,6 +28,7 @@ include '../lib/content.php'; //Creates theb main content of the page
 ?>
 </div>
 </div>
+<div id="nextToBottom"></div>
 <div id="bottom">
 
 </div>
