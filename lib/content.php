@@ -6,8 +6,8 @@ require_once '../lib/libAuth.php';
 /* Unless any arguments are sent with POST to this file it creates
    the whole content part of a page.*/
 
-if(isset($_GET["page"]))    //If there is a page variable, use it
-  $table = mysql_real_escape_string($_GET["page"]);
+if(isset($_REQUEST["page"]))    //If there is a page variable, use it
+  $table = mysql_real_escape_string($_REQUEST["page"]);
 else
   $table = DefaultPage;        //Otherwise go to the main page
 $parentToMatch = 'Page';
@@ -26,8 +26,14 @@ else{
 }
 
 
-//Function called to print out the content from an MySQL table
-//$table with the parent $parentToMatch.
+/* Function called to print out the content from an MySQL table $table 
+   with the parent $parentToMatch.
+   WARNING: This function returns no error message if the SQL-query returns
+   nothing. This makes it hard to known what causes errors in the application.
+   But this seems to be the somewhat of a must since it's sometimes called
+   with the expectation of returning nothing at all. */
+
+
 function createContent($secondClass, $what){
   global $parentToMatch;
   global $table;
