@@ -1,8 +1,8 @@
-YAWS, Yet Another WebSite, is a suite for creating websites. It's goal is to be easy to use for everyone, the clishÅÈ WYSIWYG should properly describe every part of editing the wibsite via it's interface. YAWS is a bad choice of name since it's already taken by Yet Another WebServer, it has to be changed.
+YAWS, Yet Another WebSite, is a suite for creating websites. It's goal is to be easy to use for everyone, the clishÔøΩÔøΩ WYSIWYG should properly describe every part of editing the wibsite via it's interface. YAWS is a bad choice of name since it's already taken by Yet Another WebServer, it has to be changed.
 
 Read INSTALL for installation instructions.
 
-YAWS should run on a standard LAMP setup with Apache2, MySQL and PHP5. Mcrypt is used for email validation and as of such has to be installed on the system and enabled in php.ini. The site utualizes HTML4, CSS3 and JavaScript with jQuery on the client side. But the site should look 'not horrible' in webbrowsers without proper CSS3 support. The reason why there is a table in the main structure of the site is to allow the page to be centered in IE6.
+YAWS should run on a standard LAMP setup with Apache2, MySQL, PHP5 and a MTA of your choice (perhaps postfix). Mcrypt is used for email validation and as of such has to be installed on the system and enabled in php.ini. The site utualizes HTML4, CSS3 and JavaScript with jQuery on the client side. But the site should look 'not horrible' in webbrowsers without proper CSS3 support. The reason why there is a table in the main structure of the site is to allow the page to be centered in IE6.
 
 Assuming that you have a sane setup the website should populate the database and allow you to register a first administrational account. Remember that you have to fill in the values appropriate to your setup in ./lib/settings.php.
 
