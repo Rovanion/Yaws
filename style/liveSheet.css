@@ -126,6 +126,9 @@ div.loginBox{
     position: absolute;
     margin: -12em 0 0 6em;
 }
+div.imgContainer{
+    height: 48px;
+}
 div#PageFormContainer{
 	background-image: url(../img/background.png);
 	margin-top: 0;
@@ -250,7 +253,7 @@ p{
     color:					#33302B;
     line-height:			1.5;
     text-shadow: 			1px 1px 1px rgba(0, 0, 0, 0.2);
-    margin: 				1em 0em 0em 0em;
+    margin: 				1em 0em;
 }
 p.hidden{
     overflow:				hidden;
