@@ -11,14 +11,14 @@ function makeMySQLConnection(){
          accordingly to your setup. Either that or your database just broke.'.
 	mysql_error());
 
-  if(!mysql_select_db('joypeak')){    //The database joypeak is selected, else created
-    $sql = "CREATE DATABASE `joypeak`";
+  if(!mysql_select_db(Database)){    //The database joypeak is selected, else created
+    $sql = "CREATE DATABASE `" + Database + "`";
     mysql_query($sql) or
       die('Selecting the database joypeak failed and subsequently creating a new database
            with that name also failed. Something in your setup is broken.'. 
 	  mysql_error());
     
-    $sql = "CREATE TABLE `joypeak`.`users` (
+    $sql = "CREATE TABLE `" + Database + "`.`users` (
            `email` VARCHAR( 128 ) NOT NULL ,
            `password` VARCHAR( 32 ) NOT NULL ,
            `active` TINYINT( 1 ) NULL ,
@@ -30,7 +30,7 @@ function makeMySQLConnection(){
            with the name <b>users</b> in the database joypeak. 
            Something in your setup is broken.'. mysql_error());
 
-    $sql = "CREATE TABLE `joypeak`.`pages` (
+    $sql = "CREATE TABLE `" + Database + "`.`pages` (
            `index` TINYINT NOT NULL COMMENT 'A unique number, the order of links',
            `title` TEXT NOT NULL COMMENT 'The shown title',
            `JStitle` TEXT NOT NULL COMMENT 'The cleaned title for code',
@@ -41,7 +41,7 @@ function makeMySQLConnection(){
            with the name <b>pages</b> in the database joypeak. 
            Something in your setup is broken.'. mysql_error());
 
-    $sql = "CREATE TABLE  `joypeak`.`verification` (
+    $sql = "CREATE TABLE  `" + Database + "`.`verification` (
            `email` VARCHAR( 64 ) NOT NULL COMMENT  'The email adress',
            `token` VARCHAR( 32 ) NOT NULL COMMENT  'The verification code'
            ) ENGINE = MYISAM COMMENT =  'Table used for verifying accounts';";
