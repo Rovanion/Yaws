@@ -112,8 +112,8 @@ function makeAdminInterface($post, $type){
     echo '    <div class="button delete" id="'. $id. 'DeleteButton"><h4>Ta bort</h4></div>
           </div>
           <div class="yesNoContainer" id="'. $id. 'YesNoContainer"><h5>Är du säker?</h5>
-              <div class="button yes" id="'. $id. 'YesButton"><h4>Ja</h4></div>
               <div class="button no" id="' . $id. 'NoButton"><h4>Nej</h4></div>
+              <div class="button yes" id="'. $id. 'YesButton"><h4>Ja</h4></div>
           </div>';
     if($type != 1){
       echo '<div class="submitCancelContainer" id="'. $id. 'SubmitCancelContainer">

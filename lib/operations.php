@@ -70,8 +70,8 @@ if($loggedIn){
     }
     /* This is the only function that doesn't return 1 when it succeeds but
        the index of the post that was sucessfully added to the database.
-       This so that the callback function on the client side can load the 
-       HTML of the newly created post. */
+       This so that the callback function on the client side can request 
+       the HTML of the newly created post from lib/content.php. */
     $success = mysql_query($sql);
     if($success) echo $numberOfPosts;
     else reportError($sql);
