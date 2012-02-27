@@ -78,7 +78,7 @@ function createContent($secondClass, $what){
       else if($post["type"] == 2){
 	if($loggedIn)
 	  makeAdminInterface($post, 2);
-	echo '<div id="'. $id .'Text">'. $post["content"]. '</div>';
+	echo '<p id="'. $id .'Text">'. $post["content"]. '</p>';
       }
       else if($post["type"] == 4){
 	if($loggedIn)
@@ -120,7 +120,7 @@ function makeAdminInterface($post, $type){
                 <div class="button submit"><h4>Spara</h4></div>
                 <div class="button cancel"><h4>Avbryt</h4></div>
             </div>
-            <form id="'. $id. 'Form">
+            <form id="'. $id. 'SaveForm">
                 <input type="hidden" name="index" value="'. $post["index"]. '" />
                 <input type="hidden" name="table" value="'. $table. '" />
                 <input type="hidden" name="submit" value="Spara" />
