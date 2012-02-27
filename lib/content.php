@@ -28,7 +28,7 @@ else{
 
 /* Function called to print out the content from an MySQL table $table 
    with the parent $parentToMatch.
-   WARNING: This function returns no error message if the SQL-query returns
+nn   WARNING: This function returns no error message if the SQL-query returns
    nothing. This makes it hard to known what causes errors in the application.
    But this seems to be the somewhat of a must since it's sometimes called
    with the expectation of returning nothing at all. */
@@ -158,7 +158,7 @@ function makeAddButton($id){
                 <input type="hidden" name="table" class="table" value="'. $table. '" />
                 <input type="hidden" name="parent" value="'. $id .'" />
 	    </form>
-        <div class="button submit" id="'. $id. 'SubmitButton"><h4>Skapa</h4></div>
+        <div class="button submit publish" id="'. $id. 'SubmitButton"><h4>Skapa</h4></div>
         <div class="button cancel"><h4>Avbryt</h4></div>
         </div>';
 }
