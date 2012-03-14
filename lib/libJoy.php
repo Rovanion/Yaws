@@ -37,7 +37,7 @@ function makeMenu(){    //Function that creates the main menu
     }
     else{
       echo '<div class="menuItem"><a href="index.php?page='. $post["JStitle"]. 
-	  '"><h3>'. $post["title"]. '</h3></a></div>';
+	  '"><h2 class="menuItem">'. $post["title"]. '</h2></a></div>';
     }
   }
   if($loggedIn){
