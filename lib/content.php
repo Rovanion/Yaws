@@ -2,6 +2,7 @@
 require_once '../lib/settings.php';
 require_once '../lib/libJoy.php';
 require_once '../lib/libAuth.php';
+require_once '../lib/operationFunctions.php';
 
 /* Unless any arguments are sent with POST to this file it creates
    the whole content part of a page.*/
@@ -12,6 +13,11 @@ else
   $table = DefaultPage;        //Otherwise go to the main page
 $parentToMatch = 'Page';
 
+/* If there are no pages, make one! */
+$result = mysql_query("SELECT * FROM `pages`;");
+if($result == false || mysql_num_rows($result) == 0){
+  createPage(DefaultPage, DefaultPage);
+}
 if(!isset($_POST['onePart'])){
   echo '<ul id="PageUnsortedList">';
   createContent('', 'wholePage');
@@ -25,15 +31,14 @@ else{
   createContent('', 'singleItem');
 }
 
-
-/* Function called to print out the content from an MySQL table $table 
-   with the parent $parentToMatch.
-   WARNING: This function returns no error message if the SQL-query returns
-   nothing. This makes it hard to known what causes errors in the application.
-   But this seems to be the somewhat of a must since it's sometimes called
-   with the expectation of returning nothing at all. */
-
-
+/**
+ * Function called to print out the content from an MySQL table $table
+ * with the parent $parentToMatch.
+ * WARNING: This function returns no error message if the SQL-query returns
+ * nothing. This makes it hard to known what causes errors in the application.
+ * But this seems to be the somewhat of a must since it's sometimes called
+ * with the expectation of returning nothing at all.
+ */
 function createContent($secondClass, $what){
   global $parentToMatch;
   global $table;
@@ -45,15 +50,15 @@ function createContent($secondClass, $what){
     $sql = "SELECT * FROM `{$table}` WHERE `index` ={$index}";
   }
   $result = mysql_query($sql);
-  
-  if($result == false || mysql_num_rows($result) == 0){ 
+
+  if($result == false || mysql_num_rows($result) == 0){
     return;
   }
   else{
     while($post = mysql_fetch_assoc($result)){
       global $loggedIn;
       $id = $post["JStitle"];
-      
+
       echo '<li class="contentListItem" id="'. $id. 'ContentListItem">';
       if($post["type"] != 1)
 	echo '<div id="'. $id. 'NicEditPanel"></div>';
@@ -105,7 +110,7 @@ function createContent($secondClass, $what){
 	echo '<img class="end" src="../img/hiddenEnd.png"></div>';
       }
       echo '</li>';
-    } 
+    }
   }
 }
 
@@ -116,7 +121,7 @@ function makeAdminInterface($post, $type){
 
   if($type == 0 || $type == 1 || $type == 2 || $type == 4){ //If it's a text field or open/closeall
     echo '<div class="deleteEditContainer" id="'. $id. 'DeleteEditContainer">';
-    if($type != 1) 
+    if($type != 1)
       echo '  <div class="button edit" id="'. $id. 'EditButton"><h4>Redigera</h4></div>';
     echo '    <div class="button delete" id="'. $id. 'DeleteButton"><h4>Ta bort</h4></div>
           </div>
@@ -138,7 +143,7 @@ function makeAdminInterface($post, $type){
     }
   }
   else if($type == 3) echo 'FIX ME'; //FIXME Admin interface for slideshows
-    
+
 }
 
 function makeAddButton($id){
@@ -156,10 +161,10 @@ function makeAddButton($id){
         <div class="formContainer new" id="'. $id. 'FormContainer">
             <form id="'. $id. 'Form">
                 <div class="titleContainer">
-            	    <label for=title><h6>Titel</h6></label><br /> 
+            	    <label for=title><h6>Titel</h6></label><br />
        		    <input type="text" name="title">
                 </div><div class="contentContainer">
-                    <label for="content"><h6>Brödtext</h6></label><br /> 
+                    <label for="content"><h6>Brödtext</h6></label><br />
 		    <textarea name="content" id="'. $id. 'TextArea"></textarea>
                 </div>
 		<input type="hidden" name="submit" value="Publicera" />

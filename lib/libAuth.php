@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once '../lib/settings.php';
 
 session_start();
@@ -7,27 +7,28 @@ $loggedIn = checkLogin(); //$loggedIn is true if the user is logged in, else fal
 function makeMySQLConnection(){
   //Connects to MySQL at localhost with username and password from ../lib/settings.php
   mysql_connect('localhost', DatabaseUserName, DatabasePassword) or
-    die('MySQL connection failed. You must enter your password in ../lib/settings.php 
+    die('MySQL connection failed. You must enter your password in ../lib/settings.php
          accordingly to your setup. Either that or your database just broke.'.
 	mysql_error());
 
-  if(!mysql_select_db('joypeak')){    //The database joypeak is selected, else created
+  //The database joypeak is selected, else created
+  if(!mysql_select_db('joypeak')){
     $sql = "CREATE DATABASE `joypeak`";
     mysql_query($sql) or
       die('Selecting the database joypeak failed and subsequently creating a new database
-           with that name also failed. Something in your setup is broken.'. 
-	  mysql_error());
-    
+         with that name also failed. Something in your setup is broken.'.
+	 mysql_error());
+
     $sql = "CREATE TABLE `joypeak`.`users` (
            `email` VARCHAR( 128 ) NOT NULL ,
            `password` VARCHAR( 32 ) NOT NULL ,
            `active` TINYINT( 1 ) NULL ,
             PRIMARY KEY ( `email` )
-           ) ENGINE = MYISAM DEFAULT CHARSET=utf8 COMMENT = 
+           ) ENGINE = MYISAM DEFAULT CHARSET=utf8 COMMENT =
            'The table containing the site administrators and their encrypted passwords';";
     mysql_query($sql) or
       die('Selecting the database joypeak failed and subsequently creating a new table
-           with the name <b>users</b> in the database joypeak. 
+           with the name <b>users</b> in the database joypeak.
            Something in your setup is broken.'. mysql_error());
 
     $sql = "CREATE TABLE `joypeak`.`pages` (
@@ -38,7 +39,7 @@ function makeMySQLConnection(){
            ) ENGINE = MYISAM COMMENT = 'The table containing the pages of the website';";
     mysql_query($sql) or
       die('Selecting the database joypeak failed and subsequently creating a new table
-           with the name <b>pages</b> in the database joypeak. 
+           with the name <b>pages</b> in the database joypeak.
            Something in your setup is broken.'. mysql_error());
 
     $sql = "CREATE TABLE  `joypeak`.`verification` (
@@ -47,27 +48,27 @@ function makeMySQLConnection(){
            ) ENGINE = MYISAM COMMENT =  'Table used for verifying accounts';";
     mysql_query($sql) or
       die('Selecting the database joypeak failed and subsequently creating a new table
-           with the name <b>verification</b> in the database joypeak. 
+           with the name <b>verification</b> in the database joypeak.
            Something in your setup is broken.'. mysql_error());
-    
+
     mysql_select_db('joypeak') or
-      die('Selecting the database joypeak after creating it failed in 
+      die('Selecting the database joypeak after creating it failed in
            ../lib/libAuth.php'. mysql_error());
   }
 }
 
 function checkLogin(){
   makeMySQLConnection();
-  
+
   if (isset($_POST["email"]))
     login();
-  
+
   if (isset($_SESSION["email"]) && isset($_SESSION["password"])){
-    $sql = "SELECT * FROM users WHERE email='{$_SESSION['email']}' 
+    $sql = "SELECT * FROM users WHERE email='{$_SESSION['email']}'
 	    AND password='{$_SESSION['password']}'";
     $result = mysql_query($sql);
     $array = mysql_fetch_assoc($result);
-    
+
     if($_SESSION["email"] == $array["email"] && $_SESSION["password"] == $array["password"]){
       return true;
     }
@@ -79,18 +80,19 @@ function login(){
   global $loggedIn;
   if($loggedIn)
     return;
-  
+
   if(isset($_POST["email"]) && isset($_POST["password"])){
     $password = mysql_real_escape_string($_POST["password"]);
     $user = mysql_real_escape_string($_POST["email"]);
     $md5password = md5($password);
-    $sql = "SELECT * FROM users WHERE email='{$user}' 
+    $sql = "SELECT * FROM users WHERE email='{$user}'
 	    AND password='{$md5password}'";
 
-    $result = mysql_query($sql) or //Run query and continue if it succeeds, or print the error.
+    //Run query and continue if it succeeds, or print the error.
+    $result = mysql_query($sql) or
       print "Falken anfaller! Följande SQL-sats är felaktig:<br />". $sql.
 	    '<br /><br /> Följande felmeddelande gavs:'. mysql_error();
-		
+
     if (mysql_num_rows($result) == 1){
       $_SESSION["email"] = $_POST["email"];
       $_SESSION["password"] = $md5password;

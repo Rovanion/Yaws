@@ -1,0 +1,6 @@
+<?php
+define('DefaultPage', 'Home');
+define('Database', 'Enter the DB name here');
+define('DatabaseUserName', 'Enter your DB user name here');
+define('DatabasePassword', 'Enter your DB password here');
+?>

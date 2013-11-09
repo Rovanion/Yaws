@@ -39,7 +39,7 @@ CREATE TABLE  `<insert database name here>`.`verification` (
 
 
 
-The fallowing table is included for documentational purposes soely, it will be automaticly be created for each page that is added to the website
+The fallowing table is included for documentational purposes soley, it will be automaticly be created for each page that is added to the website
 
 CREATE TABLE IF NOT EXISTS `<page name>` (
   `index` tinyint(4) NOT NULL COMMENT 'The order of posts',
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `<page name>` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
-Register over the different types of entries(the default is as previously mentioned joypeak)> in the page table:
+Register over the different types of entries in the page table:
 
 0 - A title and hidden paragraph that is opened by clicking on the paragraph.
 1 - Open and Close all buttons for the hidden paragraphs.
