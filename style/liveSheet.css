@@ -1,7 +1,7 @@
 
 /* The Yahoo CSS reset, this so that the page looks the same in every browser.
  * Atleast somewhat the same, IE is always different*/
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
     padding: 0;
     margin: 0;
 }
@@ -9,7 +9,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-fieldset,img { 
+fieldset,img {
     border: 0;
 }
 address,caption,cite,code,dfn,em,strong,th,var {
@@ -31,9 +31,13 @@ h1,h2,h3,h4,h5,h6 {
 q:before, q:after {
     content:'';
 }
-abbr,acronym { 
+abbr,acronym {
     border: 0;
-}	
+}
+
+html{
+    overflow-y: scroll;
+}
 body{
     background-color: 		#000;
 }
@@ -149,7 +153,7 @@ div#nextToBottom{
     padding: 1em;
 }
 div#bottom{
-	background-image: url("../img/pageEnd.png");	
+	background-image: url("../img/pageEnd.png");
 	height: 286px;
 	margin-bottom: 1em;
 }
@@ -160,7 +164,7 @@ li.contentListItem{
 }
 
 table {
-    margin: 				0em auto; 
+    margin: 				0em auto;
     text-align: 			center;
     width: 				40em;
 }
@@ -217,14 +221,14 @@ h1.warning,h2.warning,h3.warning,h4.warning,h5.warning,h6.warning{
     transition: all 0.3s ease-in-out;
 }
 .X:hover{
-    -webkit-transform: rotate(1deg);	
+    -webkit-transform: rotate(1deg);
     -moz-transform: rotate(1deg);
     -ms-transform: rotate(1deg);
     -o-transform: rotate(1deg);
     transform: rotate(1deg);
 }
 body.loggedIn .X:hover{
-    -webkit-transform: rotate(0deg);	
+    -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     -o-transform: rotate(0deg);
