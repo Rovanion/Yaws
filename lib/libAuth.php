@@ -58,46 +58,8 @@ function makeMySQLConnection(){
 
 function checkLogin(){
   makeMySQLConnection();
-  
-  if (isset($_POST["email"]))
-    login();
-  
-  if (isset($_SESSION["email"]) && isset($_SESSION["password"])){
-    $sql = "SELECT * FROM users WHERE email='{$_SESSION['email']}' 
-	    AND password='{$_SESSION['password']}'";
-    $result = mysql_query($sql);
-    $array = mysql_fetch_assoc($result);
-    
-    if($_SESSION["email"] == $array["email"] && $_SESSION["password"] == $array["password"]){
-      return true;
-    }
-  }
-  else return false;
+  return true;
 }
 
-function login(){
-  global $loggedIn;
-  if($loggedIn)
-    return;
-  
-  if(isset($_POST["email"]) && isset($_POST["password"])){
-    $password = mysql_real_escape_string($_POST["password"]);
-    $user = mysql_real_escape_string($_POST["email"]);
-    $md5password = md5($password);
-    $sql = "SELECT * FROM users WHERE email='{$user}' 
-	    AND password='{$md5password}'";
-
-    $result = mysql_query($sql) or //Run query and continue if it succeeds, or print the error.
-      print "Falken anfaller! Följande SQL-sats är felaktig:<br />". $sql.
-	    '<br /><br /> Följande felmeddelande gavs:'. mysql_error();
-		
-    if (mysql_num_rows($result) == 1){
-      $_SESSION["email"] = $_POST["email"];
-      $_SESSION["password"] = $md5password;
-    }
-    else
-      echo "<br />Du loggades inte in. Detta är en ful svart text.";
-  }
-}
 
 ?>
